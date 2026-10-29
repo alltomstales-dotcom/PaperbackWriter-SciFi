@@ -325,3 +325,15 @@ Three readers read three versions. Taken together, they say something useful abo
 So the engine is frozen as `engine-v1`. Book 1's lessons are now rules in the plan files: the cause and the cure must not share an object, blocked evidence reads as a signal, and no solution pieces are added after a plan read. Book 2 will be planned and written on `engine-v1` without changing a line of engine code. If Book 2's hiding passes, the lessons worked. If it fails, we'll know the method needs more than rules.
 
 Book 1 is at the private books repo's `b1-release`, with EPUB, PDF and RTF attached.
+
+## 2026-10-29 · Book 2 planned on the frozen engine
+
+Book 2 is the validation run: `engine-v1`, no code changes, no method changes. The only things that moved are the three plan rules Book 1 paid for, and this is the first plan written under them.
+
+**Choosing the problem by the rules, not by taste.** The first question for Book 2's plan was not "what's a good story?" but "what problem has a cause and a cure with nothing in common?" Book 1's cause and cure were the same machine, and three readers walked from one to the other. So Book 2's plan (in the private books repo, spoilers) picks a cause that the reader is *meant* to work out early, because Book 1 showed readers get the cause by chapter 3 to 8 anyway. Its cure has no connection to that cause. The obvious move, removing the cause, becomes a decoy. The characters argue for it and act on it, and it fails after the last hiding checkpoint, for a reason that was on the page before then.
+
+**Writing the hiding into the plan as checkable lines.** Every piece of the intended solution has a chapter, a louder event and an innocent reading in the clue map. The pieces sit at least three chapters apart before the two-thirds mark, and each one is either a number in a routine report, a joke, or the working tool of a wrong solution. The plan also bans one whole class of image before the turn, the one that would demonstrate the cure. That is Book 1's "no demonstrating images" lesson turned into a plan-level ban, not a sentence-level fix.
+
+**Checks before anyone reads it.** `rules` passes: 27 rules, every rule the solution uses on the page by chapter 17 of 24. `check-plan` passes once the writer brief exists. The answer key for the plan read was tested against six paraphrases of the intended solution and six near-misses before the read started. The grader stays authoritative at the hiding checkpoints, as Book 1 taught.
+
+Tag `b2-plan-v1`. The staged plan read is running.

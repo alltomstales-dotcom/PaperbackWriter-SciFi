@@ -118,3 +118,25 @@ The gate is the mystery engine's, with sci-fi pass rules. Before any prose is wr
 `pbw_scifi/calibrate.py` turns a Project Gutenberg text into the engine's own chapter format (`chNN.txt`, first line `Chapter N: Title`). That way the same reader, quote checker and exposition counter run on a classic exactly as they will on our books.
 
 On *The Invisible Man* it produced **29 chapters** (28 plus the epilogue), **48,162 words**, close to our planned book length. Titles came out cleanly ("Mr. Teddy Henfrey’s First Impressions"), `_italics_` became `*italics*`, and hard-wrapped lines were joined into paragraphs. With 29 chapters, the reader's checkpoints fall at chapters 9, 14, 20, 26 and 29.
+
+## 2026-10-28 · Task 7: one command
+
+`pbw_scifi/cli.py` puts the pieces behind one command, `paperbackwriter-scifi`, with seven subcommands. Each prints JSON and exits 0 on a pass, 1 on a failed check and 2 on bad input (a missing file, a malformed rules table). The three exit codes matter for the books repo: a script can stop the pipeline on a 1 without confusing it with a typo.
+
+The command does **not** re-implement anything the parent package already does. Staging chapters for a reader, building outline digests, proofreading and EPUB/PDF export stay in `paperbackwriter`, pinned at the v0.1.0 tag. That's the deal we made at the start: the mystery engine is left alone, and the sci-fi engine depends on a frozen release of it rather than a fork of its code.
+
+## 2026-10-28 · Task 8: writing the method down
+
+The code checks the book; the method tells the agents how to write one that passes. It lives in `.claude/skills/writing-scifi-novels/`, five Markdown files that any agent can read:
+- `SKILL.md`: the stages, nine rules that outrank them, the gates and stop rules;
+- `intake.md`: what to ask the author and what to assume;
+- `plan-files.md`: the seven plan files, including the rules table the checker parses;
+- `writer-brief.md`: the template for drafting agents, the fix pass and the proofread;
+- `blind-read.md`: the reader prompt, the two grader prompts and the targets.
+
+Writing it down surfaced three changes from the mystery method:
+- **"The culprit is never caught lying" became "the solution is never argued for before 75%".** In a mystery the strongest tell was a caught lie. In sci-fi the equivalent is a character who says the right idea aloud early and gets talked out of it: the reader remembers.
+- **Rules appear in action, not in lectures.** The rules table records where a rule first appears *on the page*, shown happening. A rule explained in a paragraph of narration is both an exposition run and a spotlight on the solution.
+- **Wonder is planned, not hoped for.** Every chapter skeleton has a "Wonder" line. If a reader batch comes back with no wonder quoted, the fix goes into the skeleton, not the prose.
+
+The series templates add one file the mystery series didn't need: `SERIES_RULES.md`, the canon rules of the world. Book 2 can add rules but the checker rejects any that redefine one, which is how a sequel is held to the first book's physics.

@@ -199,3 +199,18 @@ Per the stop rules, a failed plan read means redesign, not drafting. Version 2 o
 - **A decoy** that uses the same machine the wrong way, so a reader who suspects "that machine matters" has somewhere plausible to put that suspicion.
 
 All the rules the solution uses are still on the page by chapter 13 of 24. And one more seam turned up: `check-plan .` run from inside the plan folder couldn't find the writer brief one level up, because the parent engine asks a relative path for its parent. The wrapper now resolves the path first, with a test.
+
+## 2026-10-28 · Plan v2 fails at the midpoint: don't demonstrate the cure
+
+Plan v2 passed the first checkpoint cleanly: 12 of 16 rules understood, the intended solution nowhere in the reader's seven guesses. At the midpoint it failed. The reader's top guess, at 45%, was the intended solution, and its explanation is the most useful paragraph the engine has produced so far:
+
+> One chapter showed the cure. The next ruled out the small tools on scale, while the one big tool that does exactly that job sat parked nearby.
+
+The lesson is a general one for sci-fi plotting, and the mystery engine has no equivalent. **In a puzzle about *how*, demonstrating the mechanism mid-book is the same as naming the culprit.** Once a reader has seen the cure work at small scale, finding the big version is just a search, and a sharp reader runs it. Closing off the small version made things *worse*: "the robots are far too slow" reads as "so what isn't?"
+
+Plan v3 changes the structure, not the wording:
+- **The cure is never demonstrated between the first chapter and the last quarter.** The only time the mechanism is shown, it's a piece of lab history told before anything has gone wrong.
+- **The cause of the disaster stays genuinely open** until the turn, with a strong wrong theory held by the person best placed to know. When the expert is wrong for good reasons, the reader's best evidence points away from the answer.
+- **The late clue has an innocent reading** that supports the wrong theory.
+
+The two failed reads cost about four minutes of reader time each, and they have already done what the mystery engine's history said they would: they caught, before a word of prose, problems that prose polishing could never have fixed.

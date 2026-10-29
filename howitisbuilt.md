@@ -67,3 +67,17 @@ Sci-fi adds two failures mysteries rarely have:
 **Design point:** the checker's messages carry rule IDs and chapter numbers, never the rule text. It can run in front of an author who reads the book cold without spoiling anything, and a test enforces that.
 
 **Robustness:** the author's tables won't be tidy, so the parser accepts `**R2**`, `Ch. 3`, `chapter 20` and `introduced: ch 5`. A row it can't read is an error, not a silent skip, because a silently dropped rule would make the fair-play check pass when it shouldn't. Tests: 10, written first, watched fail, then passed.
+
+## 2026-10-28 · Task 3: the exposition counter
+
+`pbw_scifi/exposition.py` measures **exposition runs**: stretches of paragraphs with no dialogue and no scene break. Long runs are where readers skim, and sci-fi is prone to them because the world has to be explained.
+
+**What counts as dialogue:** any straight or curly double quote, or an opening single curly quote (`‘`). The closing single quote `’` is also an apostrophe ("man’s"), so on its own it doesn't count.
+
+**The threshold is calibrated, not guessed:** it's the 90th-percentile run length of a reference novel, rounded to 50 words, with a floor of 300.
+
+**First real measurement:** run against a finished 55,600-word mystery from the parent engine (one that scored 7–8 with blind readers), the counter found:
+- 268 runs, with a 90th percentile of only **225 words**;
+- 4 runs over 400 words, the longest 543.
+
+A well-reviewed book in this pipeline's house style rarely goes a page without someone speaking. That's useful context for whatever *The Invisible Man* produces: a Victorian novel will likely run longer, so the floor of 300 may be what actually applies.

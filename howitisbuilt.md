@@ -360,3 +360,30 @@ That is the first plan in this project to hide its solution past the checkpoints
 **The read also caught arithmetic I got wrong.** The air ledger ran out half a day before the date the characters speak. The reader saw the three spoken projections disagree, and it couldn't derive a deadline from them. Re-running the ledger showed why: I had given the cabin air too small a share. The fix is one continuous clock, with every spoken projection listed by chapter for the writers. It also caught a chemistry slip: the white mineral crust forms at the cathode, not the anode. All of these fixes go into a drafting-notes file outside the hashed plan, so the plan that passed is exactly the plan that was read.
 
 Tags `b2-planread-v1-fail`, `b2-plan-v2`, `b2-planread-v2-pass`. Drafting starts next: five Sonnet agents in order, same as Book 1.
+
+## 2026-10-29 · Book 2 drafted, and the hiding held in prose
+
+Five Sonnet agents drafted the book in order, each from the same brief with only the chapter range changed. Between agents, the planner checked the batch:
+- the two tools (`pointers`, `exposition`), which came back empty every time;
+- a word scan for anything that rises before the turn;
+- a read of every planted line.
+
+I trimmed four lines by hand. Each one did the same thing: it gave a planted piece a little more light than the skeleton did. One was a comic aside that made a survival fact vivid. Another was a phrase that echoed the ending ("the people who stay"). The writers follow the hiding rules well, but they still decorate. The planner's job between agents is to take the decoration off the planted lines.
+
+**The prose read passed every target, hiding included.** That is the first time in this project:
+
+| Checkpoint | Result |
+|---|---|
+| ch 7 | clarity 16/17; intended solution absent |
+| ch 12 | absent (rank grader null) |
+| ch 17 | absent (rank grader null), reader's front: resupply .30 |
+| ch 21 | first at .45, after the turn |
+| verdict | rules fair 8, earned 8, wonder 7, prose 8, character 7, overall 8; obvious at ch 19, the turn itself |
+
+Book 1, on the same frozen engine, was obvious by chapter 8 in all three reads. The difference is all in the plan. Book 2's cause and cure share no object. Every planted piece is the working tool of a wrong solution, or sits inside one's paperwork. And the two pieces that leaked in the plan read were moved past the last checkpoint before a word of prose was written. The hiding was decided at the plan, measured at the plan, and it held in prose. That is the claim this whole method makes, and Book 2 is the first evidence for it.
+
+**What the read found instead was a stakes problem.** The reader worked out something I hadn't. The station's threat assumed everyone breathes until the ship comes, but the lift takes three people off every seven hours. With the falling headcount, the last runs breathe a little under the safe floor for a day, which is survivable. The obvious plan ("wait for the ship") failed by hours on paper and by nothing in practice. The fix, in the one fix pass, is that the ship slips two days in chapter 18. That is after the last hiding checkpoint, and it touches no piece of the solution. Waiting then fails by days. The read also caught a door-count contradiction the ending depends on, and a handful of characters and facts that turn up only when they're needed.
+
+The reader again asked to move the buoyancy fact earlier. Again, no: that is a solution piece placed before the last checkpoint after a read, the exact way Book 1 leaked. The score it costs is one point of rules-fair at most, and the read already gave 8.
+
+Tags `b2-draft-1`, `b2-read-1`. The fix pass is running as four parallel Sonnet agents from one order list, as in Book 1.

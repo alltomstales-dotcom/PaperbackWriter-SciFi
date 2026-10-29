@@ -191,3 +191,11 @@ The read also found two real problems, and these are the ones that matter:
 - **A hole in the world.** The reader proposed a way out the plan had never closed off: a perfectly sensible use of the tide. A world where the obvious smart move would work makes characters look stupid for not trying it, so the plan needs a rule that closes it, shown early and innocently.
 
 Per the stop rules, a failed plan read means redesign, not drafting. Version 2 of the plan follows.
+
+**Plan v2.** Four changes, each answering something the v1 reader wrote down:
+- **Rules:** split into 21 one-claim rules.
+- **The leaking capability** now first appears in chapter 13, inside a scene that serves a different solution, instead of as a joke in chapter 5.
+- **The hole** is closed by a new rule, shown when a minor character proposes the idea and the lead tests it on the instruments for a full tide.
+- **A decoy** that uses the same machine the wrong way, so a reader who suspects "that machine matters" has somewhere plausible to put that suspicion.
+
+All the rules the solution uses are still on the page by chapter 13 of 24. And one more seam turned up: `check-plan .` run from inside the plan folder couldn't find the writer brief one level up, because the parent engine asks a relative path for its parent. The wrapper now resolves the path first, with a test.

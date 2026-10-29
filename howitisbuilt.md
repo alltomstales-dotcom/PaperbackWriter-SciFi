@@ -214,3 +214,33 @@ Plan v3 changes the structure, not the wording:
 - **The late clue has an innocent reading** that supports the wrong theory.
 
 The two failed reads cost about four minutes of reader time each, and they have already done what the mystery engine's history said they would: they caught, before a word of prose, problems that prose polishing could never have fixed.
+
+## 2026-10-28 · Plan v3 passes, and the answer key is the weak point
+
+Plan v3 passed every checkpoint. At the first, the reader stated 13 of 17 rules in substance. At the midpoint the intended solution sat third of the reader's guesses at 10%. At the three-quarter mark it was second at 12%, and by the last checkpoint the reader had it at 72%. The reader's verdict: rules fair 8, solution earned 7, character 7, overall 7. Those are the same numbers the calibration classic got.
+
+The pass came with a surprise about our own tooling. **Twice the reader named the intended solution and the gate didn't notice.** The gate matches the reader's guesses against a list of key phrases, and the reader had put things in the passive ("the machine is driven over…") or in different words ("override… scour"). The keyword list was written in the active voice. Had we trusted it, the midpoint numbers would have looked better than they were. Two engine changes came out of it:
+- **At the hiding checkpoints a grader is now required, and its ranking is the one that counts.** A separate strong-model grader reads the reader's guesses and says where the intended solution ranks, by its essential means rather than its wording. The keyword match becomes a cross-check. Two tests pin this: the gate refuses a hiding checkpoint with no grader file, and a grader's ranking overrides a missed keyword.
+- **Keys may be widened during a read, never narrowed,** and are tested against passive and hedged paraphrases before the read starts. Widening only ever makes the gate harder to pass, so it can't be used to rescue a failing book.
+
+The reader also told us something about the genre: **on an outline, a sharp reader works out the cause of the disaster by the midpoint.** That's fine. What has to stay hidden is the *means*, meaning the specific tool and how it's used. So the plan's hiding rules are now written about the means.
+
+## 2026-10-28 · Post-read polish (plan v3.1), before any prose
+
+A passing read still comes with a list of weaknesses. This one's were:
+- the decisive tool's key setting arrived from nowhere at the turn;
+- the strong wrong theory had only authority behind it, not evidence;
+- an obvious small-scale alternative was never closed;
+- the turn depended on a lucky accident;
+- a few characters were introduced and dropped;
+- the oxygen arithmetic said different things in different chapters.
+
+We fixed them as v3.1:
+- planted two small facts early, each inside the loudest event of its chapter;
+- gave the wrong theory real, true evidence that is only part of the story;
+- showed the small alternative failing, *after* the last hiding checkpoint so it can't show the cure early;
+- added a second, independent clue ahead of the lucky one;
+- tied off the loose characters;
+- wrote one oxygen ledger into the canon file.
+
+**The v3 read describes v3, not v3.1.** We're not re-reading the outline for polish of this kind. The two new early facts are the risk, and the blind read of the prose will measure them. Any score is valid only for the text it read, and this log says which text that was.

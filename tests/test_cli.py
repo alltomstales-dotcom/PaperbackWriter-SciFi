@@ -27,3 +27,20 @@ def test_pointers_command_exit_codes(tmp_path, capsys):
     (tmp_path / "ch02.txt").write_text("Chapter 2: B\n\nIt was not hers yet.\n", encoding="utf-8")
     assert main(["pointers", str(tmp_path)]) == 1
     assert "ch02" in capsys.readouterr().out
+
+
+def test_spoilers_command_fails_on_a_hit_and_never_prints_the_text(tmp_path, capsys):
+    import subprocess
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    subprocess.run(["git", "init", "-q", str(repo)], check=True)
+    (repo / "a.md").write_text("all clear\n", encoding="utf-8")
+    subprocess.run(["git", "-C", str(repo), "add", "a.md"], check=True)
+    terms = tmp_path / "terms.txt"
+    terms.write_text("\\bwidget\\b\n", encoding="utf-8")
+    assert main(["spoilers", "--terms", str(terms), "--repo", str(repo)]) == 0
+    (repo / "a.md").write_text("the Widget did it\n", encoding="utf-8")
+    assert main(["spoilers", "--terms", str(terms), "--repo", str(repo)]) == 1
+    out = capsys.readouterr().out
+    assert "a.md:1" in out and "Widget" not in out
+    assert main(["spoilers", "--terms", str(tmp_path / "nope"), "--repo", str(repo)]) == 2

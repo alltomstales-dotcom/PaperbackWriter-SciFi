@@ -4,7 +4,7 @@ from pbw_scifi.pointers import find_pointers, report
 
 
 def test_flags_a_wink_in_narration():
-    text = "The open channel was chatter and nobody in the Dock had ears for it."
+    text = "The radio was chatter and nobody in the Dock had ears for it."
     hits = find_pointers(text)
     assert [h.phrase for h in hits] == ["nobody in the Dock had ears for it"]
 
@@ -17,12 +17,12 @@ def test_flags_right_answer_and_foreshadowing():
 
 
 def test_ignores_the_same_words_inside_dialogue():
-    text = "“Nobody had ears for it,” said Paloma. “Not hers yet.”"
+    text = "“Nobody had ears for it,” said Ana. “Not hers yet.”"
     assert find_pointers(text) == []
 
 
 def test_ignores_plain_narration():
-    text = "The Grazer crawled on a few metres, the tracks leaving long twin grooves behind."
+    text = "The tractor crawled on a few metres, the tracks leaving long twin grooves behind."
     assert find_pointers(text) == []
 
 

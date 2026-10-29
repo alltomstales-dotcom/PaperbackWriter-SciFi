@@ -76,6 +76,21 @@ def cmd_check_plan(a):
     return _print(check_plan(Path(a.plan), a.chapters))
 
 
+def cmd_spoilers(a):
+    import subprocess
+    from .spoilers import load_terms, scan
+    patterns = load_terms(Path(a.terms))
+    root = Path(a.repo).resolve()
+    listed = subprocess.run(["git", "-C", str(root), "ls-files"], capture_output=True,
+                            text=True, check=True).stdout.splitlines()
+    files = [root / f for f in listed if not f.startswith(".superpowers/")]
+    hits = scan(files, patterns, root=root)
+    for h in hits:
+        print(f"{h['file']}:{h['line']}: spoiler term #{h['pattern']}")
+    print(f"{len(hits)} spoiler hit(s) in {len(files)} tracked files")
+    return 1 if hits else 0
+
+
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(prog="paperbackwriter-scifi", description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -127,6 +142,11 @@ def main(argv=None) -> int:
     s.add_argument("source")
     s.add_argument("out")
     s.set_defaults(func=cmd_import_reference)
+
+    s = sub.add_parser("spoilers", help="pre-push scan of tracked files against a private term list")
+    s.add_argument("--terms", required=True, help="private file, one case-insensitive regex per line")
+    s.add_argument("--repo", default=".")
+    s.set_defaults(func=cmd_spoilers)
 
     a = p.parse_args(argv)
     try:

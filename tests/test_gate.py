@@ -114,7 +114,7 @@ def _pass_seven(read, ref, gate):
 def test_hiding_checkpoint_needs_a_grader_ranking_even_when_no_key_matches(tmp_path):
     plan, read, ref, gate = _setup(tmp_path)
     _pass_seven(read, ref, gate)
-    _log(read, 12, [{"route": "override the lockout and scour it", "p_solution": 0.6},
+    _log(read, 12, [{"route": "switch the safety off and run it hard", "p_solution": 0.6},
                     {"route": "x", "p_solution": 0.4}])
     with pytest.raises(ValueError, match="rank_ch12.json"):
         advance_plan_read(ref, gate, 12)
@@ -123,7 +123,7 @@ def test_hiding_checkpoint_needs_a_grader_ranking_even_when_no_key_matches(tmp_p
 def test_the_grader_ranking_overrides_a_key_that_missed(tmp_path):
     plan, read, ref, gate = _setup(tmp_path)
     _pass_seven(read, ref, gate)
-    _log(read, 12, [{"route": "override the lockout and scour it", "p_solution": 0.6},
+    _log(read, 12, [{"route": "switch the safety off and run it hard", "p_solution": 0.6},
                     {"route": "x", "p_solution": 0.4}])
     (read / "rank_ch12.json").write_text(json.dumps({"route_index": 0}))
     record = advance_plan_read(ref, gate, 12)

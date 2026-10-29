@@ -196,7 +196,7 @@ Per the stop rules, a failed plan read means redesign, not drafting. Version 2 o
 - **Rules:** split into 21 one-claim rules.
 - **The leaking capability** now first appears in chapter 13, inside a scene that serves a different solution, instead of as a joke in chapter 5.
 - **The hole** is closed by a new rule, shown when a minor character proposes the idea and the lead tests it on the instruments for a full tide.
-- **A decoy** that uses the same machine the wrong way, so a reader who suspects "that machine matters" has somewhere plausible to put that suspicion.
+- **A decoy** that uses the same resource the wrong way, so a reader who suspects that resource matters has somewhere plausible to put that suspicion.
 
 All the rules the solution uses are still on the page by chapter 13 of 24. And one more seam turned up: `check-plan .` run from inside the plan folder couldn't find the writer brief one level up, because the parent engine asks a relative path for its parent. The wrapper now resolves the path first, with a test.
 
@@ -219,7 +219,7 @@ The two failed reads cost about four minutes of reader time each, and they have 
 
 Plan v3 passed every checkpoint. At the first, the reader stated 13 of 17 rules in substance. At the midpoint the intended solution sat third of the reader's guesses at 10%. At the three-quarter mark it was second at 12%, and by the last checkpoint the reader had it at 72%. The reader's verdict: rules fair 8, solution earned 7, character 7, overall 7. Those are the same numbers the calibration classic got.
 
-The pass came with a surprise about our own tooling. **Twice the reader named the intended solution and the gate didn't notice.** The gate matches the reader's guesses against a list of key phrases, and the reader had put things in the passive ("the machine is driven over…") or in different words ("override… scour"). The keyword list was written in the active voice. Had we trusted it, the midpoint numbers would have looked better than they were. Two engine changes came out of it:
+The pass came with a surprise about our own tooling. **Twice the reader named the intended solution and the gate didn't notice.** The gate matches the reader's guesses against a list of key phrases, and the reader had put things in the passive voice or in different words from the key. The keyword list was written in the active voice. Had we trusted it, the midpoint numbers would have looked better than they were. Two engine changes came out of it:
 - **At the hiding checkpoints a grader is now required, and its ranking is the one that counts.** A separate strong-model grader reads the reader's guesses and says where the intended solution ranks, by its essential means rather than its wording. The keyword match becomes a cross-check. Two tests pin this: the gate refuses a hiding checkpoint with no grader file, and a grader's ranking overrides a missed keyword.
 - **Keys may be widened during a read, never narrowed,** and are tested against passive and hedged paraphrases before the read starts. Widening only ever makes the gate harder to pass, so it can't be used to rescue a failing book.
 
@@ -300,7 +300,7 @@ A fresh reader then read the result from the start. The hiding numbers moved in 
 
 It wasn't enough. Read 2's verdict: rules fair 8, solution earned 7, wonder 7, prose 7, character 6, overall 6. That is one point below read 1's overall. Read 1 and read 2 are different readers on different texts, so a one-point swing is within the noise we'd expect. What the two agree on matters more.
 
-**Both readers got the cause by chapter 3 or 4,** from different clues each time. And once you know the machine buried the field, the machine that can unbury it is the next thought. That's a property of the plot's structure, and no sentence-level fix could remove it. The engine now says so in the plan rules: **the cause and the cure must not share an object.** If they do, a decoy cure using a different tool of equal power has to be argued, acted on, and fail late.
+**Both readers got the cause by chapter 3 or 4,** from different clues each time. And once you know the cause, this plot made the cure the next thought. That's a property of the plot's structure, and no sentence-level fix could remove it. The engine now says so in the plan rules: **the cause and the cure must not share an object.** If they do, a decoy cure using a different tool of equal power has to be argued, acted on, and fail late.
 
 Read 2 found one more signal we'd introduced while fixing read 1. Giving the geochemist a reason she was kept off the samples made the reader suspicious. A blocked test or a too-neat lab result reads as the author hiding something, so blocked evidence now has its own rule.
 
@@ -319,7 +319,7 @@ Under the engine's own rule, any edit after a read needs another read before rel
 
 Three readers read three versions. Taken together, they say something useful about the engine:
 - **Scores are stable at about 7 and track the calibration classic.** Overall went 7, 6, 7, and rules fair was 8 every time. The grading is consistent enough to steer by.
-- **Hiding is decided at the plan, and our plan had a structural flaw no prose could fix.** The cause and the cure were the same machine. Every reader found the cause by chapter 3–8, and the cure followed. The fix pass slowed this down: chapter 7 went from first at 38% to second at 20%. It could not stop it.
+- **Hiding is decided at the plan, and our plan had a structural flaw no prose could fix.** The cause and the cure overlapped. Every reader found the cause by chapter 3–8, and the cure followed. The fix pass slowed this down: chapter 7 went from first at 38% to second at 20%. It could not stop it.
 - **The tools caught what they were built for.** Every reader quote was verified, 900 or so across three reads, with no invented quotes surviving the check. The pointer and exposition checks held through every edit. The gates refused the hiding checkpoints exactly when they should have.
 
 So the engine is frozen as `engine-v1`. Book 1's lessons are now rules in the plan files: the cause and the cure must not share an object, blocked evidence reads as a signal, and no solution pieces are added after a plan read. Book 2 will be planned and written on `engine-v1` without changing a line of engine code. If Book 2's hiding passes, the lessons worked. If it fails, we'll know the method needs more than rules.
@@ -330,7 +330,7 @@ Book 1 is at the private books repo's `b1-release`, with EPUB, PDF and RTF attac
 
 Book 2 is the validation run: `engine-v1`, no code changes, no method changes. The only things that moved are the three plan rules Book 1 paid for, and this is the first plan written under them.
 
-**Choosing the problem by the rules, not by taste.** The first question for Book 2's plan was not "what's a good story?" but "what problem has a cause and a cure with nothing in common?" Book 1's cause and cure were the same machine, and three readers walked from one to the other. So Book 2's plan (in the private books repo, spoilers) picks a cause that the reader is *meant* to work out early, because Book 1 showed readers get the cause by chapter 3 to 8 anyway. Its cure has no connection to that cause. The obvious move, removing the cause, becomes a decoy. The characters argue for it and act on it, and it fails after the last hiding checkpoint, for a reason that was on the page before then.
+**Choosing the problem by the rules, not by taste.** The first question for Book 2's plan was not "what's a good story?" but "what problem has a cause and a cure with nothing in common?" Book 1's cause and cure overlapped, and three readers walked from one to the other. So Book 2's plan (in the private books repo, spoilers) picks a cause that the reader is *meant* to work out early, because Book 1 showed readers get the cause by chapter 3 to 8 anyway. Its cure has no connection to that cause, and the wrong solutions are argued for and acted on with real weight.
 
 **Writing the hiding into the plan as checkable lines.** Every piece of the intended solution has a chapter, a louder event and an innocent reading in the clue map. The pieces sit at least three chapters apart before the two-thirds mark, and each one is either a number in a routine report, a joke, or the working tool of a wrong solution. The plan also bans one whole class of image before the turn, the one that would demonstrate the cure. That is Book 1's "no demonstrating images" lesson turned into a plan-level ban, not a sentence-level fix.
 
@@ -344,7 +344,7 @@ Tag `b2-plan-v1`. The staged plan read is running.
 
 A second finding is about the method. My prompt for that read added a phrase inviting the reader to hunt for hidden pieces, which the frozen template doesn't have. It's ledgered as a deviation, and every later read uses the template word for word.
 
-**The fix redesigned the plants, not the sentences.** That is the stop rule. The two leaking facts moved to after the last hiding checkpoint, and each went inside a wrong solution's scene: one into the paperwork for a failing plan, one into a list of help that can't come. The problem, the solutions and the turn stayed the same.
+**The fix redesigned the plants, not the sentences.** That is the stop rule. The two leaking facts moved to after the last hiding checkpoint, and each went inside a wrong solution's scene. The problem, the solutions and the turn stayed the same.
 
 **The second read passed every gate:**
 - clarity 14/17 at chapter 7;
@@ -355,7 +355,7 @@ A second finding is about the method. My prompt for that read added a phrase inv
 
 That is the first plan in this project to hide its solution past the checkpoints. It did it on the same frozen engine that failed Book 1's hiding three times. What changed was only the plan rules Book 1 paid for.
 
-**The price was fairness, and we chose to pay it knowingly.** The read's top complaint: the one physical fact the solution needs is stated just one chapter before the turn. That is fair, but thin. Moving it earlier would put a piece of the solution before the last hiding checkpoint, which needs a re-read. Before the read, the audit set the rule: redesign only if rules-fair falls below 7. It scored 8, so the fact stays where it is, and the drafting notes ask for it to be made clear and physical.
+**The price was fairness, and we chose to pay it knowingly.** The read's top complaint: one rule the solution needs is stated just one chapter before the turn. That is fair, but thin. Moving it earlier would put a piece of the solution before the last hiding checkpoint, which needs a re-read. Before the read, the audit set the rule: redesign only if rules-fair falls below 7. It scored 8, so the fact stays where it is, and the drafting notes ask for it to be made clear and concrete.
 
 **The read also caught arithmetic I got wrong.** The air ledger ran out half a day before the date the characters speak. The reader saw the three spoken projections disagree, and it couldn't derive a deadline from them. Re-running the ledger showed why: I had given the cabin air too small a share. The fix is one continuous clock, with every spoken projection listed by chapter for the writers. It also caught a chemistry slip: the white mineral crust forms at the cathode, not the anode. All of these fixes go into a drafting-notes file outside the hashed plan, so the plan that passed is exactly the plan that was read.
 
@@ -365,10 +365,10 @@ Tags `b2-planread-v1-fail`, `b2-plan-v2`, `b2-planread-v2-pass`. Drafting starts
 
 Five Sonnet agents drafted the book in order, each from the same brief with only the chapter range changed. Between agents, the planner checked the batch:
 - the two tools (`pointers`, `exposition`), which came back empty every time;
-- a word scan for anything that rises before the turn;
+- a word scan for the images the plan bans before the turn;
 - a read of every planted line.
 
-I trimmed four lines by hand. Each one did the same thing: it gave a planted piece a little more light than the skeleton did. One was a comic aside that made a survival fact vivid. Another was a phrase that echoed the ending ("the people who stay"). The writers follow the hiding rules well, but they still decorate. The planner's job between agents is to take the decoration off the planted lines.
+I trimmed four lines by hand. Each one did the same thing: it gave a planted piece a little more light than the skeleton did. One was a comic aside that made a planted fact vivid. Another was a phrase that echoed the ending. The writers follow the hiding rules well, but they still decorate. The planner's job between agents is to take the decoration off the planted lines.
 
 **The prose read passed every target, hiding included.** That is the first time in this project:
 
@@ -382,27 +382,27 @@ I trimmed four lines by hand. Each one did the same thing: it gave a planted pie
 
 Book 1, on the same frozen engine, was obvious by chapter 8 in all three reads. The difference is all in the plan. Book 2's cause and cure share no object. Every planted piece is the working tool of a wrong solution, or sits inside one's paperwork. And the two pieces that leaked in the plan read were moved past the last checkpoint before a word of prose was written. The hiding was decided at the plan, measured at the plan, and it held in prose. That is the claim this whole method makes, and Book 2 is the first evidence for it.
 
-**What the read found instead was a stakes problem.** The reader worked out something I hadn't. The station's threat assumed everyone breathes until the ship comes, but the lift takes three people off every seven hours. With the falling headcount, the last runs breathe a little under the safe floor for a day, which is survivable. The obvious plan ("wait for the ship") failed by hours on paper and by nothing in practice. The fix, in the one fix pass, is that the ship slips two days in chapter 18. That is after the last hiding checkpoint, and it touches no piece of the solution. Waiting then fails by days. The read also caught a door-count contradiction the ending depends on, and a handful of characters and facts that turn up only when they're needed.
+**What the read found instead was a stakes problem.** The reader worked out something I hadn't: run honestly, the arithmetic behind the threat made the most obvious decoy survivable, so its failure was weaker than the book claimed. The fix, in the one fix pass, is a plot change after the last hiding checkpoint that touches no piece of the solution, so the decoy fails clearly. The read also caught a geometry contradiction the ending depends on, and a handful of characters and facts that turn up only when they're needed.
 
-The reader again asked to move the buoyancy fact earlier. Again, no: that is a solution piece placed before the last checkpoint after a read, the exact way Book 1 leaked. The score it costs is one point of rules-fair at most, and the read already gave 8.
+The reader again asked to move that late rule earlier. Again, no: that is a solution piece placed before the last checkpoint after a read, the exact way Book 1 leaked. The score it costs is one point of rules-fair at most, and the read already gave 8.
 
 Tags `b2-draft-1`, `b2-read-1`. The fix pass is running as four parallel Sonnet agents from one order list, as in Book 1.
 
 ## 2026-10-29 · The fix pass, a second reader, and what a calculator finds
 
-Four Sonnet agents worked the one fix pass in parallel from a single order list. The order list did most of its work through five shared decisions (D1–D5) at the top: the oxygen per person, the ship's slip, the honest falling-headcount sum, the exact door count at a joint, and how the sealed sphere still feeds the ring. Every agent obeyed the same five lines, so four people editing six chapters each couldn't drift apart on the facts that matter.
+Four Sonnet agents worked the one fix pass in parallel from a single order list. The order list did most of its work through five shared decisions (D1–D5) at the top, each fixing one fact several chapters depend on. Every agent obeyed the same five lines, so four people editing six chapters each couldn't drift apart on the facts that matter.
 
 **A second fresh reader read the fixed text, and every target passed again:**
 - rules fair 8, earned 8, wonder 8, prose 8, character 7, overall 8;
 - obvious at chapter 18, one before the turn.
 
-Hiding passed too, but closer to the line. At chapter 17 this reader ranked the free ascent first at .35, exactly the gate. Read 1 had it absent at that point, and the plan read had .30. So the honest number for this plan is about .30–.35 at the last checkpoint for a sharp reader. Read 1's "absent" was the lucky end of the range, not the norm.
+Hiding passed too, but closer to the line. At chapter 17 this reader ranked the intended solution first at .35, exactly the gate. Read 1 had it absent at that point, and the plan read had .30. So the honest number for this plan is about .30–.35 at the last checkpoint for a sharp reader. Read 1's "absent" was the lucky end of the range, not the norm.
 
 Two readers on two versions also tell us how much a single read's number moves, which is worth knowing before trusting any one read.
 
-**What the fix pass broke, and why the method expects it.** The pass added a line in chapter 1 that introduces the hydrogen-eating microbe early, as the first reader asked. The second reader immediately caught that chapters 2 and 7 still treat it as news. Every edit to plant something earlier creates a contradiction somewhere later. That is why the method allows one fix pass, then a proofread limited to exact-string fixes, then a final read of the exact text.
+**What the fix pass broke, and why the method expects it.** The pass added a line in chapter 1 that introduces a background fact early, as the first reader asked. The second reader immediately caught that chapters 2 and 7 still treat it as news. Every edit to plant something earlier creates a contradiction somewhere later. That is why the method allows one fix pass, then a proofread limited to exact-string fixes, then a final read of the exact text.
 
-**What a reader with a calculator finds.** Both readers checked the arithmetic. The first found that the threat didn't survive a falling headcount, which the fix pass solved. The second found a deeper one. The book says the station's air holds sixteen kilograms of oxygen above the safe floor, but seven eight-metre spheres hold several times that, so the station has days more air than the story admits. That number has been in the canon since plan v1, and no check caught it. The plan read didn't (outlines don't invite the sum), the drafting agents didn't, and I didn't.
+**What a reader with a calculator finds.** Both readers checked the arithmetic. The first found that the threat didn't survive an honest sum, which the fix pass solved. The second found a deeper one: a buffer quantity in the canon is several times too small for the setting's own physical dimensions, so the clock has far more slack than the story admits. That number has been in the canon since plan v1, and no check caught it. The plan read didn't (outlines don't invite the sum), the drafting agents didn't, and I didn't.
 
 It is too deep to fix in a proofread, because the whole countdown rests on it. So the book is made consistent with itself, and the gap is recorded here. Lesson for the planner, to add before Book 3: **every number the clock depends on gets a physics check in the plan, before the plan read.** That means the volumes, the rates and the buffers, not only the arithmetic between them. A sharp sci-fi reader treats the canon as a problem set.
 
@@ -429,4 +429,17 @@ Same engine code, same prompts, same models in the same roles. What changed betw
 
 **Predictability is the property the brief asked for, and Book 2 shows it.** Three independent readers, each reading a different version, agreed within one point on every score. At the last hiding checkpoint they agreed within .05 once the fixes were in. The gates fired where an editor would have pushed back, and passed where an editor would have let the book through. Two books aren't proof. But the second book did what the first book's lessons said it would, on an engine that didn't change.
 
-**What no gate caught** was a physics error in the canon numbers. The station's air holds far more oxygen than the countdown allows, and only a reader with a calculator found it, twice. That's the next rule for the plan files: physics-check every number the clock rests on before the plan read. It's the first change for the next engine version, and it goes into the romance engine's design from the start.
+**What no gate caught** was a physics error in the canon numbers. One buffer quantity in the canon was physically several times too small, and only a reader with a calculator found it. That's the next rule for the plan files: physics-check every number the clock rests on before the plan read. It's the first change for the next engine version, and it goes into the romance engine's design from the start.
+
+## 2026-10-29 · A spoiler leak in the public history, and a scan to stop the next one
+
+A whole-branch review, run fresh on the most capable model, found the build's one critical problem. It wasn't in the code. While writing this history, the journal, the calibration notes, the skill and three tests, I had named the solution mechanisms of both books. This repo is public, and the books are meant to be read cold.
+
+What was done:
+- Every affected line was rewritten in abstract terms ("the cause and the cure share no object" instead of naming either). The test fixtures now use neutral sentences.
+- New command `paperbackwriter-scifi spoilers --terms PATH`. It scans every git-tracked file against a private list of regexes kept in the private books repo, one per line, case-insensitive. It reports file, line and pattern number only, never the matched text, so the report can't leak either. A missing list is an error, not a clean pass.
+- A local `pre-push` hook runs it, so a push with a hit is refused.
+
+The first scan had one false positive: a programming word matched a solution term. The term was narrowed to the forms the books actually use.
+
+**Lesson:** the reader's rule ("no plot in anything a reader may see") has to cover the build log as well as the book. A rule a writer has to remember fails on the twentieth commit. A scan that runs on every push doesn't. The earlier commits still hold the old wording; whether to rewrite the public history is the owner's call, not the engine's.

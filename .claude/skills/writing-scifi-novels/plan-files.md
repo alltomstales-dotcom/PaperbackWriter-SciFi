@@ -20,7 +20,7 @@ Rules for the matrix:
 - At least three solutions have real support on the page by the halfway mark.
 - One wrong solution is the lead's own, argued aloud and acted on, and fails for a reason already on the page.
 - The intended solution's pieces appear early as background, used for something else: ideally each is the working tool of a wrong solution.
-- **The cause and the cure must not share an object.** In Book 1 the machine that buried the field was also the only thing that could wash it; prose readers found the cause by chapter 3–4 in both reads, and from there the cure was a short step. Either the cure uses something unconnected to the cause, or a decoy cure using a different tool of equal power is argued, acted on, and fails late (after the last hiding checkpoint).
+- **The cause and the cure must not share an object.** In Book 1 the cause and the cure shared one object; prose readers found the cause by chapter 3–4 in both reads, and from there the cure was a short step. Either the cure uses something unconnected to the cause, or a decoy cure using a different tool of equal power is argued, acted on, and fails late (after the last hiding checkpoint).
 - **Assume the reader gets the cause early in prose.** An outline reader got it by the midpoint; two prose readers got it by chapter 3–4. Design hiding around the means.
 - **Blocked evidence is a signal.** A character kept away from the decisive test, or a result that comes out too neat, reads as the author hiding the answer. Give the block an ordinary cause the reader sees, or don't block the test.
 - **Hold-back:** what only the lead knows, and the public story.
@@ -85,7 +85,7 @@ Names, ages, roles; the setting's layout (decks, doors, routes); every number (p
 ## audit.md (stage 3)
 
 1. **Your own pass.** At each checkpoint list only what the plan has shown so far and rank the solutions the way a reader would.
-2. **The private reference** for the plan read, written **before** the read: `reference.json` with the candidate directory, the reader folder, SHA-256 of every plan file and digest batch, and `solution_keys`, regexes that identify the intended solution in a reader's own words (test them against paraphrases, including passive and hedged ones such as "or the machine's own jets, driven by remote", and against near-misses). During a read a key may be widened, never narrowed.
+2. **The private reference** for the plan read, written **before** the read: `reference.json` with the candidate directory, the reader folder, SHA-256 of every plan file and digest batch, and `solution_keys`, regexes that identify the intended solution in a reader's own words (test them against paraphrases, including passive and hedged ones such as "or the thing is driven by someone else", and against near-misses). During a read a key may be widened, never narrowed.
 3. Run the plan read (`blind-read.md`), gating each checkpoint with `paperbackwriter-scifi gate`.
 
 Pass when the gate passes all three early checkpoints. Fail means redesign file 01, not rewording.

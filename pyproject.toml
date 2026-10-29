@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pbw-scifi"
+version = "0.1.0"
+description = "Sci-fi genre engine for PaperbackWriter."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = ["paperbackwriter @ git+https://github.com/alltomstales-dotcom/PaperbackWriter@v0.1.0"]
+
+[project.optional-dependencies]
+pdf = ["fpdf2>=2.7"]
+dev = ["pytest", "fpdf2>=2.7"]
+
+[project.scripts]
+paperbackwriter-scifi = "pbw_scifi.cli:main"
+
+[tool.setuptools]
+packages = ["pbw_scifi"]

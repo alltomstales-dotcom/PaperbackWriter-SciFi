@@ -12,3 +12,4 @@ series/
 release/
 *.wav
 .superpowers/
+*.egg-info/

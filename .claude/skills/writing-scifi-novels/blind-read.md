@@ -54,13 +54,15 @@ For a **plan read**, the reader gets outline batches instead of chapters; drop `
 
 ## Grader prompts (a separate fresh agent, never the reader)
 
-**Clarity, checkpoint 1.** Give the grader the rules introduced by the checkpoint (IDs and text, from `02b_rules_and_clues.md`), the novum paragraph from `01`, and the reader's `premise` and `rules`:
+**Clarity, checkpoint 1.** Use a strong model. Give the grader the rules introduced by the checkpoint (IDs and text, from `02b_rules_and_clues.md`), the novum paragraph from `01`, and the reader's `premise` and `rules`:
 
 ```
 Here is what a story has established so far: its premise and a numbered list of rules.
 Here is a reader's own account of the premise and the rules. For each numbered rule, say
 whether the reader's account states it (in any words), misses it, or states it wrongly.
-Say whether the reader's premise is correct. Do not reward vague statements.
+A rule is "stated" when the reader's account captures its claim in substance, in any words;
+"wrong" only if the reader asserts something that contradicts it. Say whether the reader's
+premise is correct. Do not reward vague statements.
 Write <outdir>/grade_chNN.json:
 {"premise_correct": true|false,
  "rules": [{"id": "R1", "verdict": "stated|missing|wrong", "note": "..."}]}

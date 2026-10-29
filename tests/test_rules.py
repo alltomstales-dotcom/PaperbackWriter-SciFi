@@ -73,3 +73,13 @@ def test_book_two_may_add_rules_but_not_redefine_series_rules(tmp_path):
 def test_errors_never_contain_rule_text(tmp_path):
     result = check_rules(_plan(tmp_path, "R3"))
     assert not any("spine" in e for e in result["errors"])
+
+
+def test_a_rule_with_more_than_one_claim_is_an_error(tmp_path):
+    (tmp_path / "02b_rules_and_clues.md").write_text(
+        "| R1 | The ring turns once a minute; the hub has no gravity | ch 2 |\n| R2 | Air leaks hiss | ch 3 |\n")
+    (tmp_path / "01_novum_and_solutions.md").write_text("Uses rules: R2\n")
+    result = check_rules(tmp_path)
+    assert not result["passed"]
+    assert "R1 states more than one claim (split it: one claim per rule)" in result["errors"]
+    assert "ring" not in " ".join(result["errors"])

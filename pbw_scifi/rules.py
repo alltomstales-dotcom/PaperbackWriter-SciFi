@@ -56,6 +56,9 @@ def check_rules(plan_dir: Path, series_rules: Path | None = None, n_chapters: in
     for rid, rule in book.items():
         if rid in series and series[rid].text != rule.text:
             errors.append(f"{rid} redefines a series rule")
+        # A clarity grader marks a compound rule "missing" when any one part is absent.
+        if ";" in rule.text:
+            errors.append(f"{rid} states more than one claim (split it: one claim per rule)")
     known = {**book, **series}  # a series rule is established before this book
     uses = solution_rules((plan_dir / SOLUTION).read_text(encoding="utf-8"))
     for rid in uses:

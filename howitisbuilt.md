@@ -179,3 +179,15 @@ Turning the skeletons into the reader's outline exposed two seams between the pa
 - **The gate looked for the outline batches in the wrong folder.** The plan check looks in `plan/reader/digest/`, but the gate only looked in `plan/digest/`. The gate now matches the plan check, and a test pins it.
 
 Neither problem would have been found by reading the code. Both turned up the first time the tools ran on a real plan, which is the whole argument for building the engine by writing books with it.
+
+## 2026-10-28 · The first plan read fails, twice over
+
+A fresh reader got Book 1's outline, chapters 1–7, and wrote down the premise, every rule it had noticed (seventeen, with 46 exact quotes) and seven possible solutions. Then a separate grader compared the reader's rules with the plan's rules list. The gate failed: **5 of 10 rules "stated"**, against a pass mark of two-thirds.
+
+On inspection the reader understood the world well. Each of our rules packed two or three claims into one line ("the lift needs the ship overhead; three seats; three hours each way"), and the grader, told not to reward vague answers, marked a rule missing whenever one part was absent. The reader wrote the flood tide's direction almost word for word; the rule was marked missing because it didn't mention the ebb. **The failure was in how we wrote the rules, not in the book.** So the engine changed: one claim per rule, enforced by `rules` (a semicolon in a rule is now an error), and the grader prompt now says a rule is stated when its claim is captured in substance.
+
+The read also found two real problems, and these are the ones that matter:
+- **The solution was already visible at 30%.** The reader's second guess, at 20%, was the intended solution, and it quoted the line that gave it away: a joke in chapter 5 that showed a key capability too plainly. The planner's own audit had listed that line as its top risk. The plan reader confirmed it in one batch.
+- **A hole in the world.** The reader proposed a way out the plan had never closed off: a perfectly sensible use of the tide. A world where the obvious smart move would work makes characters look stupid for not trying it, so the plan needs a rule that closes it, shown early and innocently.
+
+Per the stop rules, a failed plan read means redesign, not drafting. Version 2 of the plan follows.

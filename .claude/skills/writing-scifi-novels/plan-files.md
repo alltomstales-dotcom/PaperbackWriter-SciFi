@@ -41,6 +41,7 @@ One row per chapter: the probability a sharp reader gives each solution, the fro
 | R2 | ... | ch 4 |
 ```
 
+- **One claim per rule.** "The lift needs the ship overhead" and "The lift seats three" are two rules. The clarity grader marks a compound rule missing if any part is absent, and `rules` refuses a rule containing a semicolon.
 - The "Introduced" chapter is where the rule first appears **on the page**, shown in action, not where it is explained.
 - Rules from `SERIES_RULES.md` keep their IDs. Book 2 numbers new rules after the series' last ID.
 - No rule the intended solution uses may first appear after 75% (chapter 18 of 24).

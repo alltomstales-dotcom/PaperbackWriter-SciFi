@@ -68,11 +68,13 @@ Write <outdir>/grade_chNN.json:
  "rules": [{"id": "R1", "verdict": "stated|missing|wrong", "note": "..."}]}
 ```
 
-**Ambiguous rank.** When `gate` reports that the solution keys matched several routes, give the grader the intended solution (one paragraph) and the reader's `solutions` list:
+**Rank, checkpoints 2 and 3 (always), and any checkpoint where the keys match several routes.** The gate refuses a hiding checkpoint without this file: regex keys are a pre-filter, and in Book 1's plan reads they twice missed the intended solution in a reader's own words. Give the grader the intended solution (one paragraph, its means stated plainly) and the reader's `solutions` list:
 
 ```
-Which of these routes, if any, is the same solution as the one described? Answer with its
-index, or null if none is. Write <outdir>/rank_chNN.json: {"route_index": n or null, "why": "..."}
+Which one of these routes, if any, is the same solution as the one described? "The same
+solution" means the route gets the solution's essential means right, not merely its cause
+or its general idea. If none does, answer null; if several do, choose the most complete.
+Write <outdir>/rank_chNN.json: {"route_index": n or null, "why": "two sentences"}
 ```
 
 ## Targets

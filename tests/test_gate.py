@@ -68,6 +68,7 @@ def test_checkpoint_two_fails_when_the_intended_solution_ranks_first(tmp_path):
     advance_plan_read(ref, gate, 7)
     _log(read, 12, [{"route": "vent the spine", "p_solution": 0.5}, {"route": "x", "p_solution": 0.5 - 0.1},
                     {"route": "y", "p_solution": 0.1}])
+    (read / "rank_ch12.json").write_text(json.dumps({"route_index": 0}))
     record = advance_plan_read(ref, gate, 12)
     assert not record["passed"] and json.loads(gate.read_text())["stage"] == "FAILED_AT_12"
     assert not (read / "batch3.md").exists()
@@ -80,6 +81,7 @@ def test_an_absent_intended_solution_counts_as_hidden(tmp_path):
         {"id": "R1", "verdict": "stated"}, {"id": "R2", "verdict": "stated"}]}))
     advance_plan_read(ref, gate, 7)
     _log(read, 12, [{"route": "x", "p_solution": 1.0}])
+    (read / "rank_ch12.json").write_text(json.dumps({"route_index": None}))
     assert advance_plan_read(ref, gate, 12)["passed"]
 
 
@@ -100,3 +102,30 @@ def test_gate_finds_the_digest_under_reader_for_planner_format_plans(tmp_path):
         {"id": "R1", "verdict": "stated"}, {"id": "R2", "verdict": "stated"}]}))
     assert advance_plan_read(ref, gate, 7)["passed"]
     assert (read / "batch2.md").read_bytes() == (plan / "reader" / "digest" / "batch2.md").read_bytes()
+
+
+def _pass_seven(read, ref, gate):
+    _log(read, 7, [{"route": "x", "p_solution": 1.0}])
+    (read / "grade_ch07.json").write_text(json.dumps({"premise_correct": True, "rules": [
+        {"id": "R1", "verdict": "stated"}, {"id": "R2", "verdict": "stated"}]}))
+    advance_plan_read(ref, gate, 7)
+
+
+def test_hiding_checkpoint_needs_a_grader_ranking_even_when_no_key_matches(tmp_path):
+    plan, read, ref, gate = _setup(tmp_path)
+    _pass_seven(read, ref, gate)
+    _log(read, 12, [{"route": "override the lockout and scour it", "p_solution": 0.6},
+                    {"route": "x", "p_solution": 0.4}])
+    with pytest.raises(ValueError, match="rank_ch12.json"):
+        advance_plan_read(ref, gate, 12)
+
+
+def test_the_grader_ranking_overrides_a_key_that_missed(tmp_path):
+    plan, read, ref, gate = _setup(tmp_path)
+    _pass_seven(read, ref, gate)
+    _log(read, 12, [{"route": "override the lockout and scour it", "p_solution": 0.6},
+                    {"route": "x", "p_solution": 0.4}])
+    (read / "rank_ch12.json").write_text(json.dumps({"route_index": 0}))
+    record = advance_plan_read(ref, gate, 12)
+    assert not record["passed"] and record["rank"] == 1 and record["probability"] == 0.6
+    assert record["key_status"] == "absent"

@@ -131,8 +131,15 @@ def advance_plan_read(reference: Path, gate_path: Path, checkpoint: int, n_chapt
         raise ValueError(f"log failed verification: {checked['errors']}")
     index = points.index(checkpoint)
     rank = solution_rank(log_path, ref["solution_keys"])
-    if rank["status"] == "ambiguous":
-        resolved = folder / f"rank_ch{checkpoint:02d}.json"
+    key_status = rank["status"]
+    resolved = folder / f"rank_ch{checkpoint:02d}.json"
+    # At the two hiding checkpoints the grader's ranking is authoritative: in Book 1's
+    # plan reads the regex keys twice missed the intended solution in a reader's wording.
+    hiding = index in (1, 2)
+    if hiding and not resolved.exists():
+        raise ValueError(f"hiding checkpoint: a grader must write {resolved.name} "
+                         f"(solution keys matched routes {rank['matches']})")
+    if rank["status"] == "ambiguous" or hiding:
         if not resolved.exists():
             raise ValueError(f"solution keys match routes {rank['matches']}; a grader must write {resolved.name}")
         chosen = _load(resolved)["route_index"]
@@ -141,7 +148,7 @@ def advance_plan_read(reference: Path, gate_path: Path, checkpoint: int, n_chapt
         rank = {"status": "resolved", "p": p, "matches": [chosen] if chosen is not None else [],
                 "rank": 1 + sum(s["p_solution"] > p for s in solutions) if chosen is not None else len(solutions) + 1}
     record = {"checkpoint": checkpoint, "rank": rank["rank"], "probability": rank["p"],
-              "match": rank["status"], "exact_quotes": checked["evidence_count"]}
+              "match": rank["status"], "key_status": key_status, "exact_quotes": checked["evidence_count"]}
     if index == 0:
         grade = folder / f"grade_ch{checkpoint:02d}.json"
         if not grade.exists():

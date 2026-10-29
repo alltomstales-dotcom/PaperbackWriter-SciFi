@@ -68,6 +68,9 @@ Commit every artefact change and tag each iteration: `b1-plan-vN`, `b1-planread-
 
 - Plan read fails: redesign the solutions, not the wording. Do not draft.
 - First blind read with rules_fair or solution_earned under 5: back to the plan.
+- Blind read passes its scores but the solution is obvious more than three chapters before the turn: read "what gave it away". If it names plants, move each to a first appearance where it is the working tool of a wrong solution (a plan minor version, no plan re-read needed), then carry that and the prose fixes in the one fix pass. If it names narration, the fix pass alone.
+- Never add a piece of the intended solution to a plan after its plan read without reading that batch again. Book 1's post-read polish added two, and the prose read found both.
+- Skeleton wording travels: writers copy a skeleton's images into the prose. Write skeletons flatly, with no similes on planted pieces.
 - One fix pass, then stop.
 - Any edit after a blind read: read again before release.
 

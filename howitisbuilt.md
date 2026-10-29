@@ -257,3 +257,25 @@ Five Sonnet 5.5 agents drafted the 24 chapters in order. Each one read the brief
 The writers' conflict lists turned out to be the most useful output of drafting after the chapters themselves: **the people executing a plan are its best reviewers.** The exposition check (`exposition --threshold 300`) found eight runs over the limit across the book. Every one was broken with a line of speech from someone already in the scene.
 
 Draft 1 is tagged. The reader who has seen nothing now reads it in five stages.
+
+## 2026-10-28 · Prose read 1: good scores, and the answer visible from chapter 8
+
+A fresh Opus reader read draft 1 in five stages. Every quote it used was checked against the text: 342 of 342 were exact. Its verdict:
+- rules fair 8, solution earned 7, wonder 8, prose 7, character 7;
+- overall 7, the same as the calibration classic.
+
+Every score target passed. Hiding failed. The intended solution was the reader's first guess at chapter 7 (38%), at the midpoint (40%) and at the three-quarter mark (55%). The reader said the solution was obvious by chapter 8, ten chapters before the hero works it out.
+
+The reader's "what gave it away" field named the causes exactly, and all of them were ours:
+- **The post-read polish leaked.** The two early facts we added in plan v3.1, after the outline read had passed, were the first things the reader quoted. Our own audit had flagged them as the risk and left the prose read to measure them. It did. Without them, the v3 outline had held the solution at 10% at the midpoint.
+- **The skeleton leaked into the prose.** One of those plants carried a simile in the planner's own skeleton. The writer copied it faithfully, and the reader quoted it.
+- **The narrator pointed.** Four lines told the reader a detail mattered, for example "nobody had ears for it" and "It was not hers yet". One was written by the planner while fixing an earlier wink.
+
+The reader also caught a real science error that four rounds of planning had missed. The electrolysis chemistry was wrong: the second plate makes hydrogen, not oxygen. And as in the outline read, it found loose ends the writers had reported but not resolved.
+
+Three engine changes followed:
+- **`pointers`**, a check that flags narration telling the reader which detail matters. It finds 0 such lines in *The Invisible Man*.
+- **A stop rule** for a book that scores well but shows its answer early: move each leaking plant so that it first appears as the working tool of a *wrong* solution.
+- **Two rules for planners:** add no new solution pieces after a plan read without reading that batch again, and write skeletons flatly.
+
+The plan became v3.2. The two leaking facts now first appear inside the decoys: one as a word in a joke about a rival plan, the other as the means of committing a different, failing rescue. All 24 chapters then went through one fix pass from a single order list, with four Sonnet agents working in parallel. A fresh reader will read the result from the start.

@@ -19,3 +19,11 @@ def test_bad_input_is_exit_two(tmp_path):
 def test_check_plan_command_reports_missing_files(tmp_path, capsys):
     assert main(["check-plan", str(tmp_path)]) == 1
     assert "Missing 01_novum_and_solutions.md" in capsys.readouterr().out
+
+
+def test_pointers_command_exit_codes(tmp_path, capsys):
+    (tmp_path / "ch01.txt").write_text("Chapter 1: A\n\nThe pump ran.\n", encoding="utf-8")
+    assert main(["pointers", str(tmp_path)]) == 0
+    (tmp_path / "ch02.txt").write_text("Chapter 2: B\n\nIt was not hers yet.\n", encoding="utf-8")
+    assert main(["pointers", str(tmp_path)]) == 1
+    assert "ch02" in capsys.readouterr().out

@@ -47,7 +47,7 @@ Commit every artefact change and tag each iteration: `b1-plan-vN`, `b1-planread-
 2. **Four live solutions.** At least three have real support on the page, so the reader has something to weigh.
 3. **The intended solution looks like background.** Its pieces appear early doing something else: a tool, a habit, a fact used for another purpose. It is never argued for before 75%.
 4. **Show the novum before explaining it.** A concrete image or consequence first. The mechanism comes later, in dialogue or action, never as a lecture.
-5. **No exposition run over the calibrated threshold** (see `CALIBRATION.md`).
+5. **No exposition run over the calibrated threshold** (see `CALIBRATION.md`), **and no narration pointers** (`pointers` lists them; run it on every drafted batch before committing).
 6. **Wonder on the page.** At least one moment of awe or scale in every reader batch.
 7. **Real science is sourced.** Any real fact a plot point leans on has a source in the bible's fact table, or is replaced with an invented one.
 8. **The lead acts.** A consequential decision of their own by the quarter mark, and a wrong solution argued aloud and acted on.

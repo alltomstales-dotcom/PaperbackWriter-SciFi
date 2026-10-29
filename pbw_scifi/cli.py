@@ -31,6 +31,15 @@ def cmd_exposition(a):
     return 1 if over else 0
 
 
+def cmd_pointers(a):
+    from .pointers import report
+    hits = report(Path(a.chapters_dir))
+    for h in hits:
+        print(f"ch{h['chapter']:02d}  {h['phrase']!r}  in: {h['sentence'][:120]!r}")
+    print(f"{len(hits)} narration pointers")
+    return 1 if hits else 0
+
+
 def cmd_calibrate_threshold(a):
     from .exposition import calibrated_threshold
     return _print(calibrated_threshold(Path(a.chapters_dir)))
@@ -87,6 +96,10 @@ def main(argv=None) -> int:
     s.add_argument("chapters_dir")
     s.add_argument("--threshold", type=int, default=400)
     s.set_defaults(func=cmd_exposition)
+
+    s = sub.add_parser("pointers", help="narration that tells the reader which detail matters")
+    s.add_argument("chapters_dir")
+    s.set_defaults(func=cmd_pointers)
 
     s = sub.add_parser("calibrate-threshold", help="90th-percentile exposition run of a reference book")
     s.add_argument("chapters_dir")

@@ -154,3 +154,18 @@ Before writing a word of our own, we ran the whole toolchain on H. G. Wells's *T
 **Exposition.** The 90th-percentile run of narration without dialogue is **225 words**. That's exactly the same as Glass Island Book 1 from the mystery pipeline. Rounded, it falls under the 300-word floor in the spec, so **the threshold is now 300 words** (from a 400 placeholder). Only three of Wells's runs pass 400 words, and all three are in chapters 26–27, where the manhunt is told in summary rather than in scene. Those are also the pages a modern reader is most likely to skim, which the reader's "skimmed" quotes will confirm or refute.
 
 **Calibration found its first engine bug before Book 1 started.** Laying out Book 1's plan folder, we ran the parent engine's `check-plan` on it and it could never pass: it requires the mystery's file names (`01_solution_and_suspects.md`, `02b_clues.md`). Rather than rename our files to a mystery's vocabulary, or touch the frozen parent, `paperbackwriter-scifi check-plan` now wraps the parent check and swaps in the sci-fi names. Its outline-coverage and digest checks run unchanged. This is the pattern we want for the whole project: reuse the parent's tested logic and change only what the genre changes.
+
+**What the reader made of Wells.** A fresh Opus reader got the book in five batches and filled in the log at each one. Results:
+- **Verification:** 290 quotes, every one found word for word.
+- **Wonder:** quoted in every batch, 7 to 10 moments each time.
+- **Verdict:** overall **7**, rules fair **8**, solution earned **7**, wonder **8**, prose **7**, character **6**. The ending became obvious at chapter 27 of 29.
+
+Its complaints are specific and fair: Griffin's real aim only surfaces in chapter 24, the first murder happens off the page, and the bloodhounds and powdered glass set up for the hunt never decide anything. That last one is a fair-play note a sci-fi engine should catch, a set-up with no pay-off.
+
+The skimming quotes landed where the counter said they would. By the last log the reader had skimmed in chapters 4, 10, 19, 22, 23 and 26, and chapter 26 holds the longest run of narration in the book (819 words). One data point, but it's the first evidence that the exposition counter measures something a reader feels.
+
+Two caveats, both recorded in `CALIBRATION.md`:
+- **The reader recognised the book.** Its guesses about the ending don't count as a hiding measurement, but its scores and its quoting do.
+- **Our first pattern for "the intended solution" was too loose.** Words like *crowd* and *kill* matched several of the reader's guesses at once. Keys for our books will name the *means* of the solution, not its outcome.
+
+So the bar for Book 1 is clear: **match a classic that's lasted 129 years**, at 7 or better on overall, rules fair, solution earned and prose.

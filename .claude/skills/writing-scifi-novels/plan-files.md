@@ -82,7 +82,7 @@ Names, ages, roles; the setting's layout (decks, doors, routes); every number (p
 ## audit.md (stage 3)
 
 1. **Your own pass.** At each checkpoint list only what the plan has shown so far and rank the solutions the way a reader would.
-2. **The private reference** for the plan read, written **before** the read: `reference.json` with the candidate directory, the reader folder, SHA-256 of every plan file and digest batch, and `solution_keys`, regexes that identify the intended solution in a reader's own words (test them against two or three paraphrases).
+2. **The private reference** for the plan read, written **before** the read: `reference.json` with the candidate directory, the reader folder, SHA-256 of every plan file and digest batch, and `solution_keys`, regexes that identify the intended solution in a reader's own words (test them against paraphrases, including passive and hedged ones such as "or the machine's own jets, driven by remote", and against near-misses). During a read a key may be widened, never narrowed.
 3. Run the plan read (`blind-read.md`), gating each checkpoint with `paperbackwriter-scifi gate`.
 
 Pass when the gate passes all three early checkpoints. Fail means redesign file 01, not rewording.

@@ -81,3 +81,17 @@ Sci-fi adds two failures mysteries rarely have:
 - 4 runs over 400 words, the longest 543.
 
 A well-reviewed book in this pipeline's house style rarely goes a page without someone speaking. That's useful context for whatever *The Invisible Man* produces: a Victorian novel will likely run longer, so the floor of 300 may be what actually applies.
+
+## 2026-10-28 · Task 4: reading the reader
+
+`pbw_scifi/reads.py` checks a sci-fi reader's checkpoint log. Unlike the mystery log (one list of suspects), it has several parts:
+- the premise and rules in the reader's own words;
+- a probability for each way the central problem might be solved;
+- quoted moments of wonder, skimming and confusion.
+
+The rule carried over unchanged: **every quote anywhere in the log must be found word for word in the chapter it cites.** One invented quote voids the log. In the parent engine's history this check passed 164 of 164 real quotes, so readers do quote accurately; the check exists so we never have to assume it.
+
+**Finding the intended solution among the reader's guesses.** A mystery reader names a person, so matching is easy. A sci-fi reader describes a *method* in their own words ("they vent the spine to stop the spin"). The plan therefore keeps a private list of patterns that identify the intended solution, written before the read. Three outcomes:
+- **one route matches:** its rank and probability are recorded;
+- **no route matches:** the reader hasn't thought of it, which counts as hidden;
+- **several routes match:** the patterns are too loose, so a separate grader agent picks one, and the choice is saved next to the log.

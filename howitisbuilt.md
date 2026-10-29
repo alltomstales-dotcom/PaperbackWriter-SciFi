@@ -95,3 +95,20 @@ The rule carried over unchanged: **every quote anywhere in the log must be found
 - **one route matches:** its rank and probability are recorded;
 - **no route matches:** the reader hasn't thought of it, which counts as hidden;
 - **several routes match:** the patterns are too loose, so a separate grader agent picks one, and the choice is saved next to the log.
+
+## 2026-10-28 · Task 5: the plan-read gate
+
+The gate is the mystery engine's, with sci-fi pass rules. Before any prose is written, a fresh reader gets the chapter outline in five batches, and the next batch is released **only if the current checkpoint passes**:
+
+| Checkpoint (24 chapters) | Passes when |
+|---|---|
+| 7 (about 30%) | **Clarity.** A separate grader agent compares the reader's premise and rules with the rules the plan has introduced so far. The premise must be right, at least two-thirds of the rules stated, and none stated wrongly. |
+| 12 (50%) | The intended solution is **not the reader's first choice** |
+| 17 (70%) | The intended solution's probability is **.35 or less** |
+| 21, 24 | Recorded, not gated |
+
+**The early checkpoint changed meaning.** In the mystery engine, every early checkpoint asks "is the answer hidden?" In sci-fi, hiding too well at 30% is its own failure: a reader who doesn't yet understand the world can't weigh solutions, so a low score would mean confusion, not misdirection. The first checkpoint therefore tests **understanding**, and hiding is tested from 50% on.
+
+**Answers can't move after the fact.** As in the parent engine, the plan's intended solution and the SHA-256 hashes of the plan and digest files are written to a private reference file before the read starts. If a plan file changes mid-read, the gate refuses to score, so a plan can't be quietly adjusted to pass a read it already failed.
+
+**A grader omission counts against the book.** If the grader's verdict leaves out a rule, that rule counts as *missing*, not stated, so a lazy grade can't pass the clarity gate.

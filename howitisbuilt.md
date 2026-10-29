@@ -305,3 +305,23 @@ It wasn't enough. Read 2's verdict: rules fair 8, solution earned 7, wonder 7, p
 Read 2 found one more signal we'd introduced while fixing read 1. Giving the geochemist a reason she was kept off the samples made the reader suspicious. A blocked test or a too-neat lab result reads as the author hiding something, so blocked evidence now has its own rule.
 
 Under the stop rules, that was Book 1's one fix pass. Book 1 now goes to proofreading (hard errors only), a final read of the exact text being released, and export. Its scores will be what they are. Book 2 will be written on the frozen engine with these rules in it, and its hiding numbers are the real test of whether the engine has learned anything.
+
+## 2026-10-29 · Book 1 released, and the engine frozen
+
+The proofread was done by an Opus agent and limited to hard errors. It found 79, every one an exact-string fix that the parent engine's `proof` command applies only where the old text occurs exactly once:
+- 40 calendar dates turned into "Day N";
+- 22 contradictions between chapters;
+- 7 arithmetic slips;
+- 5 typos;
+- 5 places where the last chapters broke the book's own biology.
+
+Under the engine's own rule, any edit after a read needs another read before release. So a third fresh reader read the exact text being released. Its verdict: rules fair 8, solution earned 8, wonder 7, prose 8, character 7, **overall 7**. Every score target passed. Hiding failed for the third time (obvious by chapter 8).
+
+Three readers read three versions. Taken together, they say something useful about the engine:
+- **Scores are stable at about 7 and track the calibration classic.** Overall went 7, 6, 7, and rules fair was 8 every time. The grading is consistent enough to steer by.
+- **Hiding is decided at the plan, and our plan had a structural flaw no prose could fix.** The cause and the cure were the same machine. Every reader found the cause by chapter 3–8, and the cure followed. The fix pass slowed this down: chapter 7 went from first at 38% to second at 20%. It could not stop it.
+- **The tools caught what they were built for.** Every reader quote was verified, 900 or so across three reads, with no invented quotes surviving the check. The pointer and exposition checks held through every edit. The gates refused the hiding checkpoints exactly when they should have.
+
+So the engine is frozen as `engine-v1`. Book 1's lessons are now rules in the plan files: the cause and the cure must not share an object, blocked evidence reads as a signal, and no solution pieces are added after a plan read. Book 2 will be planned and written on `engine-v1` without changing a line of engine code. If Book 2's hiding passes, the lessons worked. If it fails, we'll know the method needs more than rules.
+
+Book 1 is at the private books repo's `b1-release`, with EPUB, PDF and RTF attached.

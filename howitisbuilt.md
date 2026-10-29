@@ -169,3 +169,13 @@ Two caveats, both recorded in `CALIBRATION.md`:
 - **Our first pattern for "the intended solution" was too loose.** Words like *crowd* and *kill* matched several of the reader's guesses at once. Keys for our books will name the *means* of the solution, not its outcome.
 
 So the bar for Book 1 is clear: **match a classic that's lasted 129 years**, at 7 or better on overall, rules fair, solution earned and prose.
+
+## 2026-10-28 · Task 11 begins: Book 1's plan, and two more seams
+
+Book 1 is planned: a series bible, a rules list (twelve rules, six of them used by the intended solution, all on the page by chapter 8 of 24), the solution curve, a resolution map, the canon, and 24 chapter skeletons. None of the plot appears here; it lives in the private books repo.
+
+Turning the skeletons into the reader's outline exposed two seams between the parent engine and this one. Both are small, and neither would have shown up in unit tests written from the spec alone:
+- **Rule IDs would have leaked to the reader.** The method doc said to tag rules inline as `(R1)`, as the mystery engine does with clues. But the parent's converter only strips IDs starting with C, M, T or H. A plan reader would have seen "(R8)" next to the event that introduces the solution's key rule, which is about as loud a spotlight as exists. Planner notes now go on a `Planner:` line that the converter drops.
+- **The gate looked for the outline batches in the wrong folder.** The plan check looks in `plan/reader/digest/`, but the gate only looked in `plan/digest/`. The gate now matches the plan check, and a test pins it.
+
+Neither problem would have been found by reading the code. Both turned up the first time the tools ran on a real plan, which is the whole argument for building the engine by writing books with it.

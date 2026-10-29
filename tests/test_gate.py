@@ -89,3 +89,14 @@ def test_a_changed_plan_file_is_refused(tmp_path):
     _log(read, 7, [{"route": "x", "p_solution": 1.0}])
     with pytest.raises(ValueError, match="changed"):
         advance_plan_read(ref, gate, 7)
+
+
+def test_gate_finds_the_digest_under_reader_for_planner_format_plans(tmp_path):
+    plan, read, ref, gate = _setup(tmp_path)
+    (plan / "reader").mkdir()
+    (plan / "digest").rename(plan / "reader" / "digest")   # where `paperbackwriter digest reader` writes it
+    _log(read, 7, [{"route": "vent it", "p_solution": 0.9}, {"route": "other", "p_solution": 0.1}])
+    (read / "grade_ch07.json").write_text(json.dumps({"premise_correct": True, "rules": [
+        {"id": "R1", "verdict": "stated"}, {"id": "R2", "verdict": "stated"}]}))
+    assert advance_plan_read(ref, gate, 7)["passed"]
+    assert (read / "batch2.md").read_bytes() == (plan / "reader" / "digest" / "batch2.md").read_bytes()

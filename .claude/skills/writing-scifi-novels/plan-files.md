@@ -67,12 +67,12 @@ The mystery engine's planner format, so `paperbackwriter reader` and `paperbackw
 ```
 **Ch 1. Title. When. Where.**
 - **Event:** what happens.
-- **Rule shown:** R1 appears in action (planner note; stripped for the reader).
 - **Wonder:** the moment of scale or awe.
-- [D]: the lead's own decision.
+- **[D]:** the lead's own decision.
+- Planner: R1 shown in the hatch drill (C1). Anything the reader must not see.
 ```
 
-Mark rule and clue IDs in parentheses, e.g. `(R1)`, `(C3)`; the reader tool strips them. Vary chapter endings.
+Put rule IDs, clue IDs and planner notes on a `Planner:` line and build the reader outlines with `paperbackwriter reader plan --drop '^Planner:'`, then `paperbackwriter digest plan/reader`. The parent tool strips clue IDs like `(C3)` but **not** `(R1)`, so a rule ID left in an event line would reach the plan reader. Never write "ch 5" or a two-digit number with a leading zero in reader-visible text; the converter refuses it as a leftover planner mark. Vary chapter endings.
 
 ## canon.md
 

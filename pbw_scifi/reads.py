@@ -117,11 +117,13 @@ def advance_plan_read(reference: Path, gate_path: Path, checkpoint: int, n_chapt
     ref = _load(reference)
     candidate = (reference.parent / ref["candidate_directory"]).resolve()
     folder = (reference.parent / ref["reader_folder"]).resolve()
+    # Planner-format plans keep the digest under reader/, as check-plan expects.
+    digest = candidate / "reader" / "digest" if (candidate / "reader" / "digest").is_dir() else candidate / "digest"
     for name, h in ref["plan_sha256"].items():
         if _sha(candidate / name) != h:
             raise ValueError(f"plan file changed since the reference was written: {name}")
     for name, h in ref["digest_sha256"].items():
-        if _sha(candidate / "digest" / name) != h or ((folder / name).exists() and _sha(folder / name) != h):
+        if _sha(digest / name) != h or ((folder / name).exists() and _sha(folder / name) != h):
             raise ValueError(f"digest batch changed since the reference was written: {name}")
     log_path = folder / f"log_ch{checkpoint:02d}.json"
     checked = check_log(log_path)
@@ -166,7 +168,7 @@ def advance_plan_read(reference: Path, gate_path: Path, checkpoint: int, n_chapt
         name = f"batch{index + 2}.md"
         if (folder / name).exists():
             raise ValueError("next batch was already released")
-        shutil.copy2(candidate / "digest" / name, folder / name)
+        shutil.copy2(digest / name, folder / name)
         record["released_through"] = points[index + 1]
         gate["stage"] = "EARLY_GATE_PASSED" if gate["gate_passed"] else "RUNNING"
     else:

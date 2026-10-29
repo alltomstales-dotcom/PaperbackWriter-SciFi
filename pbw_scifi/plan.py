@@ -15,7 +15,7 @@ _MYSTERY_ONLY = sorted(set(mystery.FIXED) - set(FIXED))
 
 
 def check_plan(root: Path, n_chapters: int = 24) -> dict:
-    root = Path(root)
+    root = Path(root).resolve()  # the parent looks for the writer brief in root.parent
     result = mystery.check_plan(root, n_chapters)
     drop = {f"Missing {name}" for name in _MYSTERY_ONLY}
     errors = [e for e in result["errors"] if e not in drop]

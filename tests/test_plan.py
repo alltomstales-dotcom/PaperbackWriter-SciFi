@@ -27,3 +27,12 @@ def test_word_cap_applies_to_sci_fi_files(tmp_path):
     _plan(tmp_path)
     (tmp_path / "01_novum_and_solutions.md").write_text("word " * 2000)
     assert "01_novum_and_solutions.md must contain fewer than 2,000 words" in check_plan(tmp_path)["errors"]
+
+
+def test_writer_brief_one_level_up_is_found_from_a_relative_path(tmp_path, monkeypatch):
+    plan = tmp_path / "plan"
+    plan.mkdir()
+    _plan(plan)
+    (plan / "WRITER_BRIEF.md").rename(tmp_path / "WRITER_BRIEF.md")
+    monkeypatch.chdir(plan)
+    assert "Missing writer brief" not in check_plan(".")["errors"]

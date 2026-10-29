@@ -112,3 +112,9 @@ The gate is the mystery engine's, with sci-fi pass rules. Before any prose is wr
 **Answers can't move after the fact.** As in the parent engine, the plan's intended solution and the SHA-256 hashes of the plan and digest files are written to a private reference file before the read starts. If a plan file changes mid-read, the gate refuses to score, so a plan can't be quietly adjusted to pass a read it already failed.
 
 **A grader omission counts against the book.** If the grader's verdict leaves out a rule, that rule counts as *missing*, not stated, so a lazy grade can't pass the clarity gate.
+
+## 2026-10-28 · Task 6: importing the calibration book
+
+`pbw_scifi/calibrate.py` turns a Project Gutenberg text into the engine's own chapter format (`chNN.txt`, first line `Chapter N: Title`). That way the same reader, quote checker and exposition counter run on a classic exactly as they will on our books.
+
+On *The Invisible Man* it produced **29 chapters** (28 plus the epilogue), **48,162 words**, close to our planned book length. Titles came out cleanly ("Mr. Teddy Henfrey’s First Impressions"), `_italics_` became `*italics*`, and hard-wrapped lines were joined into paragraphs. With 29 chapters, the reader's checkpoints fall at chapters 9, 14, 20, 26 and 29.

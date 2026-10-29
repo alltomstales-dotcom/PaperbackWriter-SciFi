@@ -14,3 +14,8 @@ def test_rules_command_exit_codes(tmp_path, capsys):
 
 def test_bad_input_is_exit_two(tmp_path):
     assert main(["rules", str(tmp_path / "missing")]) == 2
+
+
+def test_check_plan_command_reports_missing_files(tmp_path, capsys):
+    assert main(["check-plan", str(tmp_path)]) == 1
+    assert "Missing 01_novum_and_solutions.md" in capsys.readouterr().out

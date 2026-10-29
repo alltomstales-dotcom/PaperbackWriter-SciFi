@@ -62,6 +62,11 @@ def cmd_import_reference(a):
     return 0
 
 
+def cmd_check_plan(a):
+    from .plan import check_plan
+    return _print(check_plan(Path(a.plan), a.chapters))
+
+
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(prog="paperbackwriter-scifi", description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -72,6 +77,11 @@ def main(argv=None) -> int:
     s.add_argument("--series", help="SERIES_RULES.md (rules established before this book)")
     s.add_argument("--chapters", type=int, default=24)
     s.set_defaults(func=cmd_rules)
+
+    s = sub.add_parser("check-plan", help="structure check of a plan folder (no spoilers printed)")
+    s.add_argument("plan")
+    s.add_argument("--chapters", type=int, default=24)
+    s.set_defaults(func=cmd_check_plan)
 
     s = sub.add_parser("exposition", help="list exposition runs over the threshold")
     s.add_argument("chapters_dir")

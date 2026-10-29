@@ -38,7 +38,9 @@ Your chapters: <N to M>. Output: $B/chapters/chNN.txt.
 2. **Every wrong solution gets real weight.** Characters argue for them sincerely, for reasons on the page.
 3. **The lead's wrong turn is argued aloud and acted on,** for good reasons. Never obtuse.
 4. **No chapter title names a clue or a rule.**
-5. **Never stack.** Before chapter <Y>, no two pieces of the intended solution within three chapters.
+5. **Never stack, never add.** Put a piece of the intended solution only where the skeleton places it, and only once. Never echo or recall an earlier piece before chapter <X>.
+5a. **No demonstrating images.** Writers decorate. A simile that makes the key tool look like it does the job ("the way a man wipes a table") shows the cure as surely as a scene would. Before chapter <X>, describe a planted piece flatly.
+5b. **No winks.** "She registered it without hearing it" tells the reader to remember the line. Let the louder event carry the scene and say nothing about the planted line.
 6. **Self-check before each save:** "If a sharp reader stopped here, which solution would they rank first, and is it what 02a_curve says?" If the intended one would be first before chapter <X>, cut what put it there.
 
 After your last chapter run wc -w on your files. Reply in under 100 words with any canon conflict or gap you worked around.

@@ -74,7 +74,7 @@ Write <outdir>/grade_chNN.json:
 Which one of these routes, if any, is the same solution as the one described? "The same
 solution" means the route gets the solution's essential means right, not merely its cause
 or its general idea. If none does, answer null; if several do, choose the most complete.
-Write <outdir>/rank_chNN.json: {"route_index": n or null, "why": "two sentences"}
+Write <outdir>/rank_chNN.json: {"route_index": n or null, "why": "two sentences"}, where n is the 0-based position of the route in the log's `solutions` list (the first route is 0)
 ```
 
 ## Targets

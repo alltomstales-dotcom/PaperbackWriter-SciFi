@@ -129,3 +129,40 @@ def test_the_grader_ranking_overrides_a_key_that_missed(tmp_path):
     record = advance_plan_read(ref, gate, 12)
     assert not record["passed"] and record["rank"] == 1 and record["probability"] == 0.6
     assert record["key_status"] == "absent"
+
+
+@pytest.mark.parametrize("verdict", ["Wrong", " WRONG "])
+def test_clarity_reads_verdict_spelling_loosely(tmp_path, verdict):
+    # I3: "Wrong" used to count as missing, so a wrong rule no longer failed the gate.
+    g = tmp_path / "grade_ch07.json"
+    g.write_text(json.dumps({"premise_correct": True, "rules": [
+        {"id": "R1", "verdict": "stated"}, {"id": "R2", "verdict": "stated"}, {"id": "R3", "verdict": verdict}]}))
+    assert clarity(g, ["R1", "R2", "R3"])["wrong"] == ["R3"]
+
+
+@pytest.mark.parametrize("grade", [
+    {"premise_correct": "false", "rules": [{"id": "R1", "verdict": "stated"}]},
+    {"premise_correct": True, "rules": [{"id": "R1", "verdict": "incorrect"}]},
+    {"premise_correct": True, "rules": [{"id": "R1", "verdict": "stated"}, {"id": "R1", "verdict": "wrong"}]},
+])
+def test_clarity_refuses_a_grade_it_cannot_read(tmp_path, grade):
+    g = tmp_path / "grade_ch07.json"
+    g.write_text(json.dumps(grade))
+    with pytest.raises(ValueError):
+        clarity(g, ["R1"])
+
+
+@pytest.mark.parametrize("index", [-1, 2, 1.0, True, "0"])
+def test_a_route_index_outside_the_log_is_refused(tmp_path, index):
+    # I4: -1 silently picked the last route; 2 raised an uncaught IndexError.
+    plan, read, ref, gate = _setup(tmp_path)
+    _pass_seven(read, ref, gate)
+    _log(read, 12, [{"route": "a", "p_solution": 0.6}, {"route": "b", "p_solution": 0.4}])
+    (read / "rank_ch12.json").write_text(json.dumps({"route_index": index}))
+    with pytest.raises(ValueError, match="route_index"):
+        advance_plan_read(ref, gate, 12)
+
+
+def test_the_rank_prompt_says_the_index_is_zero_based():
+    prompt = (Path(__file__).parents[1] / ".claude/skills/writing-scifi-novels/blind-read.md").read_text()
+    assert "0-based" in prompt

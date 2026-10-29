@@ -12,6 +12,7 @@ from pathlib import Path
 
 SCENE_BREAK = "* * *"
 HEADING = re.compile(r"Chapter \d+: .+")
+DEFAULT_THRESHOLD = 300  # calibrated on the reference novel (CALIBRATION.md, 2026-10-28)
 
 
 @dataclass(frozen=True)
@@ -43,11 +44,16 @@ def runs(text: str) -> list[Run]:
     return out
 
 
-def _chapter_files(chapters_dir: Path):
+def _chapter_files(chapters_dir: Path) -> list[tuple[int, str]]:
+    found = []
     for path in sorted(Path(chapters_dir).glob("ch*.txt")):
         m = re.fullmatch(r"ch(\d+)\.txt", path.name)
         if m:
-            yield int(m.group(1)), path.read_text(encoding="utf-8")
+            found.append((int(m.group(1)), path.read_text(encoding="utf-8")))
+    if not found:
+        # An empty or mistyped folder must not read as a clean gate.
+        raise ValueError(f"no chNN.txt files in {chapters_dir}")
+    return found
 
 
 def report(chapters_dir: Path, threshold: int) -> list[dict]:

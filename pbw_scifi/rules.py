@@ -11,7 +11,8 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-ROW = re.compile(r"^\|\s*\**(R\d+)\**\s*\|(.*)$", re.M)
+RULE_ID = re.compile(r"[Rr](\d+)([A-Za-z]?)")
+LOOKS_LIKE_ID = re.compile(r"[Rr]\s*\d")
 WHEN = re.compile(r"(?:introduced:\s*)?(?:ch(?:apter)?\.?\s*(\d+)|book\s*(\d+))", re.I)
 USES = re.compile(r"(?mi)^\W*uses rules:?\**\s*(.+)$")
 BOOK_RULES = "02b_rules_and_clues.md"
@@ -27,21 +28,30 @@ class Rule:
 
 def parse_rules(text: str) -> dict[str, Rule]:
     rules: dict[str, Rule] = {}
-    for m in ROW.finditer(text):
-        rid = m.group(1)
-        cells = [c.strip() for c in m.group(2).split("|")]
-        when = WHEN.fullmatch(cells[1]) if len(cells) > 1 else None
-        if not cells[0] or not when:
+    for line in text.splitlines():
+        if not line.lstrip().startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        first = cells[0].strip("*` ")
+        m = RULE_ID.fullmatch(first)
+        if not m:
+            # Header, separator and clue rows are skipped; a near-miss rule ID is not.
+            if LOOKS_LIKE_ID.match(first) or (not first and any(cells[1:])):
+                raise ValueError(f"rule row with no clean ID (use R3 or R3a): {first or '(empty)'!r}")
+            continue
+        rid = f"R{m.group(1)}{m.group(2).lower()}"
+        when = WHEN.fullmatch(cells[2]) if len(cells) > 2 else None
+        if len(cells) < 2 or not cells[1] or not when:
             raise ValueError(f"{rid}: row needs '| {rid} | rule | ch N |' (or 'book N')")
         if rid in rules:
             raise ValueError(f"duplicate rule ID {rid}")
-        rules[rid] = Rule(rid, cells[0], int(when.group(1)) if when.group(1) else 0)
+        rules[rid] = Rule(rid, cells[1], int(when.group(1)) if when.group(1) else 0)
     return rules
 
 
 def solution_rules(text: str) -> list[str]:
     m = USES.search(text)
-    ids = re.findall(r"R\d+", m.group(1)) if m else []
+    ids = [f"R{n}{s.lower()}" for n, s in re.findall(r"\b[Rr](\d+)([A-Za-z]?)\b", m.group(1))] if m else []
     if not ids:
         raise ValueError("no 'Uses rules: R1, R2' line in the solution file")
     return ids
@@ -59,7 +69,9 @@ def check_rules(plan_dir: Path, series_rules: Path | None = None, n_chapters: in
         # A clarity grader marks a compound rule "missing" when any one part is absent.
         if ";" in rule.text:
             errors.append(f"{rid} states more than one claim (split it: one claim per rule)")
-    known = {**book, **series}  # a series rule is established before this book
+    # A series rule counts from before this book unless the book lists it: a reader new
+    # to the series meets it where this book first shows it.
+    known = {**series, **book}
     uses = solution_rules((plan_dir / SOLUTION).read_text(encoding="utf-8"))
     for rid in uses:
         if rid not in known:

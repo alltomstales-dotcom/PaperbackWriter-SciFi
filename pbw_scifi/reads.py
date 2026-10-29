@@ -89,12 +89,22 @@ def wonder_count(log_path: Path) -> int:
 def clarity(grade_path: Path, rule_ids: list[str]) -> dict:
     """Score a grader's verdict on the reader's premise and rules. A rule the grader left out is missing."""
     grade = _load(grade_path)
-    verdicts = {r["id"]: r["verdict"] for r in grade.get("rules", [])}
+    premise = grade.get("premise_correct")
+    if not isinstance(premise, bool):
+        raise ValueError(f"{Path(grade_path).name}: premise_correct must be true or false")
+    verdicts: dict[str, str] = {}
+    for r in grade.get("rules", []):
+        rid, verdict = r.get("id"), str(r.get("verdict", "")).strip().lower()
+        if verdict not in ("stated", "missing", "wrong"):
+            raise ValueError(f"{Path(grade_path).name}: verdict for {rid} must be stated, missing or wrong")
+        if rid in verdicts:
+            raise ValueError(f"{Path(grade_path).name}: rule {rid} graded twice")
+        verdicts[rid] = verdict
     stated = [r for r in rule_ids if verdicts.get(r) == "stated"]
     wrong = [r for r in rule_ids if verdicts.get(r) == "wrong"]
     missing = [r for r in rule_ids if r not in stated and r not in wrong]
-    passed = bool(grade.get("premise_correct")) and not wrong and len(stated) * 3 >= len(rule_ids) * 2
-    return {"passed": passed, "premise_correct": bool(grade.get("premise_correct")),
+    passed = premise and not wrong and len(stated) * 3 >= len(rule_ids) * 2
+    return {"passed": passed, "premise_correct": premise,
             "stated": stated, "missing": missing, "wrong": wrong}
 
 
@@ -142,8 +152,13 @@ def advance_plan_read(reference: Path, gate_path: Path, checkpoint: int, n_chapt
     if rank["status"] == "ambiguous" or hiding:
         if not resolved.exists():
             raise ValueError(f"solution keys match routes {rank['matches']}; a grader must write {resolved.name}")
-        chosen = _load(resolved)["route_index"]
+        graded = _load(resolved)
         solutions = _load(log_path)["solutions"]
+        chosen = graded.get("route_index", "missing")
+        if chosen is not None and (isinstance(chosen, bool) or not isinstance(chosen, int)
+                                   or not 0 <= chosen < len(solutions)):
+            raise ValueError(f"{resolved.name}: route_index must be null or a 0-based index "
+                             f"into the log's {len(solutions)} solutions")
         p = solutions[chosen]["p_solution"] if chosen is not None else 0.0
         rank = {"status": "resolved", "p": p, "matches": [chosen] if chosen is not None else [],
                 "rank": 1 + sum(s["p_solution"] > p for s in solutions) if chosen is not None else len(solutions) + 1}

@@ -22,7 +22,7 @@ pytest -q
 |---|---|
 | `check-plan PLAN_DIR [--chapters 24]` | Structure check of a plan folder: files present, each under 2,000 words, outline covers every chapter, digest batches match (prints no plot) |
 | `rules PLAN_DIR [--series SERIES_RULES.md] [--chapters 24]` | Fair-play check: every rule the intended solution uses appears on the page by 75% |
-| `exposition CHAPTERS_DIR [--threshold 400]` | Lists runs of narration with no dialogue longer than the threshold |
+| `exposition CHAPTERS_DIR [--threshold 300]` | Lists runs of narration with no dialogue longer than the threshold |
 | `pointers CHAPTERS_DIR` | Lists narration that tells the reader which detail matters ("nobody noticed it", "the right answer", "not hers yet"); dialogue is skipped |
 | `calibrate-threshold CHAPTERS_DIR` | The 90th-percentile exposition run of a reference book |
 | `check-read LOG [--key REGEX ...] [--finished]` | Verifies a reader's checkpoint log: staging, probabilities, every quote found in its chapter |

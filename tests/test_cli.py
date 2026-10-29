@@ -1,5 +1,7 @@
 import json
 
+import pytest
+
 from pbw_scifi.cli import main
 
 
@@ -44,3 +46,17 @@ def test_spoilers_command_fails_on_a_hit_and_never_prints_the_text(tmp_path, cap
     out = capsys.readouterr().out
     assert "a.md:1" in out and "Widget" not in out
     assert main(["spoilers", "--terms", str(tmp_path / "nope"), "--repo", str(repo)]) == 2
+
+
+@pytest.mark.parametrize("command", ["exposition", "pointers"])
+def test_a_missing_or_empty_chapters_folder_is_bad_input(tmp_path, command):
+    # I5: both used to report "0 found" and exit 0, which reads as a clean gate.
+    assert main([command, str(tmp_path / "nope")]) == 2
+    assert main([command, str(tmp_path)]) == 2
+
+
+def test_exposition_defaults_to_the_calibrated_threshold(tmp_path, capsys):
+    # I6: the default was the 400 placeholder; CALIBRATION.md fixed it at 300.
+    (tmp_path / "ch01.txt").write_text("Chapter 1: T\n\n" + "word " * 350 + "\n", encoding="utf-8")
+    assert main(["exposition", str(tmp_path)]) == 1
+    assert "over 300 words" in capsys.readouterr().out

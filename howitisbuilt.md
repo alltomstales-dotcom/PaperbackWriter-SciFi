@@ -443,3 +443,18 @@ What was done:
 The first scan had one false positive: a programming word matched a solution term. The term was narrowed to the forms the books actually use.
 
 **Lesson:** the reader's rule ("no plot in anything a reader may see") has to cover the build log as well as the book. A rule a writer has to remember fails on the twentieth commit. A scan that runs on every push doesn't. The earlier commits still hold the old wording; whether to rewrite the public history is the owner's call, not the engine's.
+
+## 2026-10-29 · engine-v1.1: what the final review found in the gates
+
+The same review found six places where a gate could pass when it should fail. None of them changed a result for either book: both still pass every check with the new code. But each was one typo or one oddly worded grader reply away from a false pass:
+
+| # | What could slip through | Now |
+|---|---|---|
+| I1 | A series rule that this book first shows late counted as known from Book 1 | The book's own chapter wins; a reader new to the series meets the rule where this book shows it |
+| I2 | Rule rows written `R3a`, `` `R3` ``, `r3` or indented vanished without a word | They parse; a near-miss ID like `R 3` is an error |
+| I3 | A grader writing `"Wrong"` or `"false"` (a string) could pass the clarity gate | Verdicts are read case-blind, and anything else is refused |
+| I4 | A 1-based or negative `route_index` scored the wrong route at a hiding checkpoint | The prompt says 0-based, and the gate refuses anything outside the log |
+| I5 | `exposition` and `pointers` on a mistyped folder reported "0 found", a clean pass | Exit 2: no chapter files |
+| I6 | The default exposition threshold was still the 400 placeholder | 300, the calibrated value, held in one constant |
+
+Each fix began as a test that failed, then passed; the suite went from 49 to 69 tests. The pattern behind all six is the same: **a gate that is quiet on bad input looks exactly like a gate that passed.** Every check now fails loudly when it can't read its input.

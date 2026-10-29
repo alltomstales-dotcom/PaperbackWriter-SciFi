@@ -83,3 +83,30 @@ def test_a_rule_with_more_than_one_claim_is_an_error(tmp_path):
     assert not result["passed"]
     assert "R1 states more than one claim (split it: one claim per rule)" in result["errors"]
     assert "ring" not in " ".join(result["errors"])
+
+
+def test_the_books_own_chapter_wins_over_the_series_row(tmp_path):
+    # I1: a series rule this book first shows late is late for a reader new to the series.
+    series = tmp_path / "SERIES_RULES.md"
+    series.write_text("| R8 | Docking needs two keys | book 1 |\n")
+    plan = tmp_path / "plan"
+    plan.mkdir()
+    _plan(plan, "R8", TABLE + "| R8 | Docking needs two keys | ch 20 |\n")
+    assert check_rules(plan, series)["errors"] == ["R8 is used by the solution but first appears in chapter 20 (after 18)"]
+
+
+def test_split_rules_and_loose_id_cells_parse():
+    # I2: R3a/R3b, backticks, lowercase and indented rows used to vanish without an error.
+    rules = parse_rules("| R3a | One half | ch 4 |\n  | `R3b` | Other half | ch 5 |\n| r4 | Lower | ch 6 |\n")
+    assert sorted(rules) == ["R3a", "R3b", "R4"]
+    assert solution_rules("Uses rules: R3a, r3b and R4\n") == ["R3a", "R3b", "R4"]
+
+
+@pytest.mark.parametrize("row", ["| R 3 | Spaced | ch 4 |", "| | No ID | ch 5 |", "| R3x2 | Odd | ch 5 |"])
+def test_a_row_that_looks_like_a_rule_but_has_no_clean_id_is_an_error(row):
+    with pytest.raises(ValueError, match="rule row"):
+        parse_rules(TABLE + row + "\n")
+
+
+def test_header_separator_and_clue_rows_are_not_rules():
+    assert sorted(parse_rules(TABLE + "| C1 | A clue | ch 2 |\n")) == ["R1", "R2", "R3"]

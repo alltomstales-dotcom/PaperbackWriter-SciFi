@@ -11,6 +11,8 @@ import json
 import sys
 from pathlib import Path
 
+from .exposition import DEFAULT_THRESHOLD
+
 
 def _print(result) -> int:
     print(json.dumps(result, indent=2, ensure_ascii=False))
@@ -109,7 +111,7 @@ def main(argv=None) -> int:
 
     s = sub.add_parser("exposition", help="list exposition runs over the threshold")
     s.add_argument("chapters_dir")
-    s.add_argument("--threshold", type=int, default=400)
+    s.add_argument("--threshold", type=int, default=DEFAULT_THRESHOLD)
     s.set_defaults(func=cmd_exposition)
 
     s = sub.add_parser("pointers", help="narration that tells the reader which detail matters")

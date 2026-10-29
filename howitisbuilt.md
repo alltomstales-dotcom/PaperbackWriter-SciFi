@@ -407,3 +407,26 @@ Two readers on two versions also tell us how much a single read's number moves, 
 It is too deep to fix in a proofread, because the whole countdown rests on it. So the book is made consistent with itself, and the gap is recorded here. Lesson for the planner, to add before Book 3: **every number the clock depends on gets a physics check in the plan, before the plan read.** That means the volumes, the rates and the buffers, not only the arithmetic between them. A sharp sci-fi reader treats the canon as a problem set.
 
 Tags `b2-fix-1`, `b2-read-2`. Proofread next, then a final read of the exact released text.
+
+## 2026-10-29 · Book 2 released, and what two books say about the engine
+
+The proofread made 37 exact-string fixes. One more fresh reader then read the exact text being released. Its scores: rules fair 8, solution earned 8, wonder 7, prose 8, character 7, overall 7. The solution was obvious at chapter 18, one chapter before the turn. Hiding passed again: the solution was absent at chapter 12 and ranked .30 at chapter 17. Every target the engine sets was met. Book 2 is released in the private books repo as `b2-release` (EPUB, PDF, RTF; 47,941 words).
+
+**The comparison this project was built to make:**
+
+| | Book 1 (engine built while writing) | Book 2 (engine frozen) |
+|---|---|---|
+| Plan reads to pass | 3 | 2 |
+| Prose reads | 3 | 3 |
+| Overall | 7, 6, 7 | 8, 8, 7 |
+| Hidden at ch 17 | first at .45–.55 every read | absent, .35, .30 |
+| Became obvious | ch 7–8 | ch 19, 18, 18 |
+
+Same engine code, same prompts, same models in the same roles. What changed between the books is three plan rules, each bought with a Book 1 failure:
+1. The cause and the cure share no object.
+2. Blocked evidence reads as a signal.
+3. Every planted piece has a job inside a wrong solution, or it waits until after the last checkpoint.
+
+**Predictability is the property the brief asked for, and Book 2 shows it.** Three independent readers, each reading a different version, agreed within one point on every score. At the last hiding checkpoint they agreed within .05 once the fixes were in. The gates fired where an editor would have pushed back, and passed where an editor would have let the book through. Two books aren't proof. But the second book did what the first book's lessons said it would, on an engine that didn't change.
+
+**What no gate caught** was a physics error in the canon numbers. The station's air holds far more oxygen than the countdown allows, and only a reader with a calculator found it, twice. That's the next rule for the plan files: physics-check every number the clock rests on before the plan read. It's the first change for the next engine version, and it goes into the romance engine's design from the start.

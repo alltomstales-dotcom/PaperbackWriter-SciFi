@@ -15,3 +15,20 @@ Dated process notes: stage reached, scores, what changed and why. No plot.
 - 2026-10-29: Book 2 plan read v1 failed (intended first .25 at ch 12; two jobless plants plus a skeleton wink of mine; read prompt deviation ledgered). Plan v2 moved the plants after the checkpoints. Plan read v2 PASSED all hiding gates (ch 7 clarity 14/17; ch 12 absent; ch 17 .30; ch 21 .60), verdict 8/8/7/8. Buoyancy kept at ch 18 (rules fair 8 ≥ pre-set 7); air clock, chemistry and counts fixed in DRAFTING_NOTES (outside the hashed plan). Tag b2-planread-v2-pass. Drafting next.
 - 2026-10-29: Book 2 drafted (5 Sonnet agents, 47.5k words, b2-draft-1). Prose read 1: clarity 16/17; intended ABSENT at ch 7/12/17 (graders null); verdict 8/8/7/8/7/8; obvious ch 19 (the turn) — every target met, first hiding pass in prose. Stakes hole (falling headcount makes waiting survivable) → fix pass: ship slips to Day 17 in ch 18. Buoyancy kept at ch 18 (ruling). Tag b2-read-1; fix pass running.
 - 2026-10-29: Book 2 fix pass (4 parallel Sonnet, shared decisions D1–D5; ship slips to Day 17), b2-fix-1. Prose read 2: 8/8/8/8/7/8, obvious ch 18; hiding passes (ch 17 .35 = gate). Read-to-read spread at ch 17: absent / .30 / .35. Found: cabin-air buffer far larger than canon's 16 kg (physics gap since plan v1) → made consistent in proofread, recorded as a planner lesson (physics-check clock numbers before the plan read). b2-read-2. Proofread running.
+- 2026-10-29: Book 2 proofread (37 exact-string fixes, b2-proof); final read of the released text 8/8/7/8/7/7, obvious ch 18, hiding pass (absent ch 7/12, .30 ch 17); released (books repo b2-release, EPUB/PDF/RTF, 47,941 words).
+
+## Validation verdict (engine-v1, two books)
+
+| Gate | Book 1 | Book 2 | What a miss needs |
+|---|---|---|---|
+| Plan read: clarity at ch 7 | pass (v3) | pass (v1 17/18, v2 14/17) | — |
+| Plan read: intended not first at ch 12 | pass after 3 plans | fail v1, pass v2 | redesign the plants: give each a job in a wrong solution, move jobless ones past the checkpoint |
+| Plan read: intended ≤ .35 at ch 17 | pass | pass (.30) | — |
+| Prose: clarity at ch 7 | pass ×3 | pass ×3 (16, 14, 16 of 17) | — |
+| Prose: hidden at ch 12 / ch 17 | **fail ×3** | **pass ×3** (absent/absent/absent; absent/.35/.30) | structural: cause and cure must share no object (now a plan rule) |
+| Prose: obvious ≥ one before the turn | **fail ×3** (ch 7–8) | pass ×3 (ch 19, 18, 18) | same |
+| Verdict scores ≥ 7 | pass ×2 of 3 | pass ×3 (overall 8, 8, 7) | — |
+| Quotes verified | ~900/900 | ~885/885 | — |
+| Exposition / pointers | 0 / 0 after fixes | 0 / 0 every batch | — |
+
+**Is it predictable?** On Book 2, yes: three independent readers on three versions agree within one point on every score and within .05 at the last hiding checkpoint. The gates fired exactly where a human editor would have pushed back (Book 2 plan v1 at ch 12). The one class of error no gate caught is physics in canon numbers (the cabin-air buffer): add a physics check on the clock's numbers to the plan files before Book 3 or the romance engine.

@@ -387,3 +387,23 @@ Book 1, on the same frozen engine, was obvious by chapter 8 in all three reads. 
 The reader again asked to move the buoyancy fact earlier. Again, no: that is a solution piece placed before the last checkpoint after a read, the exact way Book 1 leaked. The score it costs is one point of rules-fair at most, and the read already gave 8.
 
 Tags `b2-draft-1`, `b2-read-1`. The fix pass is running as four parallel Sonnet agents from one order list, as in Book 1.
+
+## 2026-10-29 · The fix pass, a second reader, and what a calculator finds
+
+Four Sonnet agents worked the one fix pass in parallel from a single order list. The order list did most of its work through five shared decisions (D1–D5) at the top: the oxygen per person, the ship's slip, the honest falling-headcount sum, the exact door count at a joint, and how the sealed sphere still feeds the ring. Every agent obeyed the same five lines, so four people editing six chapters each couldn't drift apart on the facts that matter.
+
+**A second fresh reader read the fixed text, and every target passed again:**
+- rules fair 8, earned 8, wonder 8, prose 8, character 7, overall 8;
+- obvious at chapter 18, one before the turn.
+
+Hiding passed too, but closer to the line. At chapter 17 this reader ranked the free ascent first at .35, exactly the gate. Read 1 had it absent at that point, and the plan read had .30. So the honest number for this plan is about .30–.35 at the last checkpoint for a sharp reader. Read 1's "absent" was the lucky end of the range, not the norm.
+
+Two readers on two versions also tell us how much a single read's number moves, which is worth knowing before trusting any one read.
+
+**What the fix pass broke, and why the method expects it.** The pass added a line in chapter 1 that introduces the hydrogen-eating microbe early, as the first reader asked. The second reader immediately caught that chapters 2 and 7 still treat it as news. Every edit to plant something earlier creates a contradiction somewhere later. That is why the method allows one fix pass, then a proofread limited to exact-string fixes, then a final read of the exact text.
+
+**What a reader with a calculator finds.** Both readers checked the arithmetic. The first found that the threat didn't survive a falling headcount, which the fix pass solved. The second found a deeper one. The book says the station's air holds sixteen kilograms of oxygen above the safe floor, but seven eight-metre spheres hold several times that, so the station has days more air than the story admits. That number has been in the canon since plan v1, and no check caught it. The plan read didn't (outlines don't invite the sum), the drafting agents didn't, and I didn't.
+
+It is too deep to fix in a proofread, because the whole countdown rests on it. So the book is made consistent with itself, and the gap is recorded here. Lesson for the planner, to add before Book 3: **every number the clock depends on gets a physics check in the plan, before the plan read.** That means the volumes, the rates and the buffers, not only the arithmetic between them. A sharp sci-fi reader treats the canon as a problem set.
+
+Tags `b2-fix-1`, `b2-read-2`. Proofread next, then a final read of the exact released text.

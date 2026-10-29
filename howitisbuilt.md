@@ -140,3 +140,15 @@ Writing it down surfaced three changes from the mystery method:
 - **Wonder is planned, not hoped for.** Every chapter skeleton has a "Wonder" line. If a reader batch comes back with no wonder quoted, the fix goes into the skeleton, not the prose.
 
 The series templates add one file the mystery series didn't need: `SERIES_RULES.md`, the canon rules of the world. Book 2 can add rules but the checker rejects any that redefine one, which is how a sequel is held to the first book's physics.
+
+## 2026-10-28 · Task 9: a home for every version of the books
+
+Tom asked that every iteration of what the engine writes be uploaded as a versioned object. The books contain spoilers and the engine repo is public, so they can't share a repo. The books live in a **private** GitHub repo, `PaperbackWriter-SciFi-Books`, under one rule: one commit per change and an **annotated git tag per iteration**: `b1-plan-v1`, `b1-planread-v1-fail`, `b1-plan-v2`, `b1-draft-1`, `b1-read-1` and so on. Each tag message carries the scores. Any two versions can be compared with `git diff`, and the release tags get the EPUB and PDF attached.
+
+We considered writing an archiving module and decided against it: git tags already are versioned objects, and a convention written in a README costs nothing to maintain.
+
+## 2026-10-28 · Task 10: calibrating on a classic
+
+Before writing a word of our own, we ran the whole toolchain on H. G. Wells's *The Invisible Man* (1897). Two questions: how long does a real novel let narration run without dialogue, and what does our reader score a book everyone agrees is good?
+
+**Exposition.** The 90th-percentile run of narration without dialogue is **225 words**. That's exactly the same as Glass Island Book 1 from the mystery pipeline. Rounded, it falls under the 300-word floor in the spec, so **the threshold is now 300 words** (from a 400 placeholder). Only three of Wells's runs pass 400 words, and all three are in chapters 26–27, where the manhunt is told in summary rather than in scene. Those are also the pages a modern reader is most likely to skim, which the reader's "skimmed" quotes will confirm or refute.

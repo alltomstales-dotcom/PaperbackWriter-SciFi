@@ -244,3 +244,16 @@ We fixed them as v3.1:
 - wrote one oxygen ledger into the canon file.
 
 **The v3 read describes v3, not v3.1.** We're not re-reading the outline for polish of this kind. The two new early facts are the risk, and the blind read of the prose will measure them. Any score is valid only for the text it read, and this log says which text that was.
+
+## 2026-10-28 · Drafting Book 1: what the planner caught between agents
+
+Five Sonnet 5.5 agents drafted the 24 chapters in order. Each one read the brief, the plan and every earlier chapter, then wrote five chapters, one file per call. The result was 49,200 words in about 50 minutes of agent time. Between agents the planner (Opus, holding the plan) read the new chapters for four kinds of problem. Each kind was fixed in the text, and then in the brief so the next agent wouldn't repeat it:
+
+- **Winks.** A writer added "she registered it without hearing it" after a planted line. That sentence tells the reader to remember the line. It was cut, and the brief now bans winks.
+- **Demonstrating images.** A writer described the key machine in a simile that made it look like it already did the job. A simile can show the cure as clearly as a scene can. It was cut, and the brief now asks for planted pieces to be described flatly.
+- **Early pointers at the cause.** A minor character asked to test exactly the material that holds the answer, nine chapters early. Her request now points at her own project. The material stays in the chapter the plan gives it.
+- **Fair-play holes the writers found themselves.** Each agent was asked to list canon conflicts it worked around. Two of those lists exposed real holes in the plan: a distance that couldn't fit the map, and a piece of equipment that first appeared in the climax. Under fair play, a piece of hardware that first appears in the climax is a cheat. The fix was to put it on the page the hero reads at the turn, along with her arithmetic.
+
+The writers' conflict lists turned out to be the most useful output of drafting after the chapters themselves: **the people executing a plan are its best reviewers.** The exposition check (`exposition --threshold 300`) found eight runs over the limit across the book. Every one was broken with a line of speech from someone already in the scene.
+
+Draft 1 is tagged. The reader who has seen nothing now reads it in five stages.

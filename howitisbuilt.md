@@ -279,3 +279,29 @@ Three engine changes followed:
 - **Two rules for planners:** add no new solution pieces after a plan read without reading that batch again, and write skeletons flatly.
 
 The plan became v3.2. The two leaking facts now first appear inside the decoys: one as a word in a joke about a rival plan, the other as the means of committing a different, failing rescue. All 24 chapters then went through one fix pass from a single order list, with four Sonnet agents working in parallel. A fresh reader will read the result from the start.
+
+## 2026-10-28 · Prose read 2: the fix pass slowed the leak; the structure decided
+
+The one fix pass followed plan v3.2. Four Sonnet agents worked in parallel from a single order list. The fixes:
+- moved the leaking plants into the decoys;
+- corrected the chemistry;
+- closed every continuity gap the reader had named;
+- gave the climax a real setback.
+
+The `pointers` and exposition checks both came back clean.
+
+A fresh reader then read the result from the start. The hiding numbers moved in the right direction:
+
+| Checkpoint | Read 1 | Read 2 |
+|---|---|---|
+| ch 7 | 1st, 38% | 2nd, 20% |
+| ch 12 | 1st, 40% | 1st, 35% |
+| ch 17 | 1st, 55% | 1st, 45% |
+
+It wasn't enough. Read 2's verdict: rules fair 8, solution earned 7, wonder 7, prose 7, character 6, overall 6. That is one point below read 1's overall. Read 1 and read 2 are different readers on different texts, so a one-point swing is within the noise we'd expect. What the two agree on matters more.
+
+**Both readers got the cause by chapter 3 or 4,** from different clues each time. And once you know the machine buried the field, the machine that can unbury it is the next thought. That's a property of the plot's structure, and no sentence-level fix could remove it. The engine now says so in the plan rules: **the cause and the cure must not share an object.** If they do, a decoy cure using a different tool of equal power has to be argued, acted on, and fail late.
+
+Read 2 found one more signal we'd introduced while fixing read 1. Giving the geochemist a reason she was kept off the samples made the reader suspicious. A blocked test or a too-neat lab result reads as the author hiding something, so blocked evidence now has its own rule.
+
+Under the stop rules, that was Book 1's one fix pass. Book 1 now goes to proofreading (hard errors only), a final read of the exact text being released, and export. Its scores will be what they are. Book 2 will be written on the frozen engine with these rules in it, and its hiding numbers are the real test of whether the engine has learned anything.

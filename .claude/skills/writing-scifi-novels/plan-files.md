@@ -19,7 +19,10 @@ Files in `series/<slug>/bookN/plan/`, written in this order, one per turn, each 
 Rules for the matrix:
 - At least three solutions have real support on the page by the halfway mark.
 - One wrong solution is the lead's own, argued aloud and acted on, and fails for a reason already on the page.
-- The intended solution's pieces appear early as background, used for something else.
+- The intended solution's pieces appear early as background, used for something else: ideally each is the working tool of a wrong solution.
+- **The cause and the cure must not share an object.** In Book 1 the machine that buried the field was also the only thing that could wash it; prose readers found the cause by chapter 3–4 in both reads, and from there the cure was a short step. Either the cure uses something unconnected to the cause, or a decoy cure using a different tool of equal power is argued, acted on, and fails late (after the last hiding checkpoint).
+- **Assume the reader gets the cause early in prose.** An outline reader got it by the midpoint; two prose readers got it by chapter 3–4. Design hiding around the means.
+- **Blocked evidence is a signal.** A character kept away from the decisive test, or a result that comes out too neat, reads as the author hiding the answer. Give the block an ordinary cause the reader sees, or don't block the test.
 - **Hold-back:** what only the lead knows, and the public story.
 
 ## 02a_curve.md

@@ -337,3 +337,26 @@ Book 2 is the validation run: `engine-v1`, no code changes, no method changes. T
 **Checks before anyone reads it.** `rules` passes: 27 rules, every rule the solution uses on the page by chapter 17 of 24. `check-plan` passes once the writer brief exists. The answer key for the plan read was tested against six paraphrases of the intended solution and six near-misses before the read started. The grader stays authoritative at the hiding checkpoints, as Book 1 taught.
 
 Tag `b2-plan-v1`. The staged plan read is running.
+
+## 2026-10-29 · Book 2's plan read: one fail, one pass
+
+**The first read failed, and the leak was mine.** At the chapter-12 checkpoint the reader ranked the intended solution first, at 25%. It got there by joining two lines: a number in a routine report in chapter 2, and a passing grumble in chapter 8. Neither line had a job in its scene. A planted fact with no job reads as a plant. Book 1 had already learned to make each piece the working tool of a wrong solution, but I had done that for only three of the five pieces. Worse, the chapter 2 skeleton had a narrator wink in it ("nobody looks up…"), written by me, the planner, in the plan itself. The engine's `pointers` check runs on prose, not on skeletons. Lesson: read skeletons with the same eye.
+
+A second finding is about the method. My prompt for that read added a phrase inviting the reader to hunt for hidden pieces, which the frozen template doesn't have. It's ledgered as a deviation, and every later read uses the template word for word.
+
+**The fix redesigned the plants, not the sentences.** That is the stop rule. The two leaking facts moved to after the last hiding checkpoint, and each went inside a wrong solution's scene: one into the paperwork for a failing plan, one into a list of help that can't come. The problem, the solutions and the turn stayed the same.
+
+**The second read passed every gate:**
+- clarity 14/17 at chapter 7;
+- intended solution absent at chapter 12;
+- 30% at chapter 17, tied first (the gate is at most 35%);
+- 60% at chapter 21;
+- verdict: rules fair 8, earned 8, character 7, overall 8.
+
+That is the first plan in this project to hide its solution past the checkpoints. It did it on the same frozen engine that failed Book 1's hiding three times. What changed was only the plan rules Book 1 paid for.
+
+**The price was fairness, and we chose to pay it knowingly.** The read's top complaint: the one physical fact the solution needs is stated just one chapter before the turn. That is fair, but thin. Moving it earlier would put a piece of the solution before the last hiding checkpoint, which needs a re-read. Before the read, the audit set the rule: redesign only if rules-fair falls below 7. It scored 8, so the fact stays where it is, and the drafting notes ask for it to be made clear and physical.
+
+**The read also caught arithmetic I got wrong.** The air ledger ran out half a day before the date the characters speak. The reader saw the three spoken projections disagree, and it couldn't derive a deadline from them. Re-running the ledger showed why: I had given the cabin air too small a share. The fix is one continuous clock, with every spoken projection listed by chapter for the writers. It also caught a chemistry slip: the white mineral crust forms at the cathode, not the anode. All of these fixes go into a drafting-notes file outside the hashed plan, so the plan that passed is exactly the plan that was read.
+
+Tags `b2-planread-v1-fail`, `b2-plan-v2`, `b2-planread-v2-pass`. Drafting starts next: five Sonnet agents in order, same as Book 1.
